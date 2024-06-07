@@ -1,0 +1,24 @@
+USE DATABASE;
+
+=>Table list
+SHOW TABLES;
+SHOW FULL TABLES;
+
+......................................................
+=> Drop table (single);
+
+DROP TABLE persons;
+DROP TABLE IF EXISTS persons;
+
+
+==> Drop table (mulit/bulk)
+DROP TABLE persons,staffs,employees,users;
+DROP TABLE IF EXISTS persons,staffs,employees,users;
+.........................................................
+
+==> Rename Table
+*Syntax
+
+
+ALTER TABLE oldtablename RENAME TO newtables;
+ALTER TABLE persons RENAME TO users;

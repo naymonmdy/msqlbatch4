@@ -1,0 +1,68 @@
+==> MySql  (Structured Query Language)
+
+//Comments
+
+#Comments Here
+--comment Here
+/*comment Here*/
+
+
+Multili line Comment
+/*
+
+Comment Here
+
+
+
+*/
+.........................
+
+=>Arithemztic Operators
+
++ ( Add )
+- ( Subtraction )
+* ( Multiply )
+/ ( Divide )
+% ( Modulus )
+
+........................
+
+=> Comparasion Operators
+=  Define
+>  greater than
+<  less than
+>= greater than
+<= less than
+!= or  <> not Equal
+between   between as a certain range
+LIKE Search for pattern
+IN  To specify multiple possible values for a columns
+
+........................
+=>Exercise Addition Operators 
+
+SELECT 10 * 2;   20
+
+=>Exercise DIVISION Operators 
+you can write 10 DIV 2
+
+=>Exercise Mulitiply Operators 
+
+CRUD
+CREATE  / READ /UPDATE /DELETE
+
+CREATE DATABASE  = create a new database
+CREATE TABLE    = create a new table
+
+
+ALTER DATABASE =modified database
+ALTER TABLE =modified table
+
+DROP DATABASE = delete database
+DROP TABLE = delete database
+
+
+INSERT INTO = insert new data into database tabel
+SELECT
+UPDATE
+DELETE

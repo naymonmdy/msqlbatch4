@@ -1,0 +1,34 @@
+==> Numeric Data Types
+
+
+
+
+Data Types                              Description
+
+BIT(size)                              A bit-value type , from 1 to 64 , default value is 1
+BOOL                                   Zero is considered as false, non-zero are considered as ture
+BOOLEAN                                Zero is considered as false, non-zero are considered as ture
+
+
+TINYINT                                A very small integer, Signed rage (-128 to 127), unsigned (0 to 255)
+SMALLINT                               A small integer, Signed rage (-3277 to 3276), unsigned (0 to 6555) kb
+MEDIUMINT                              A large integer, Signed rage (-8388608 to 8388607), unsigned (0 to 16777215)(16mb)
+INT                                    A large integer, Signed rage (-2147483648 to 2147483647), unsigned (0 to 4294967295)(4gb)
+INTEGER                                A large integer, Signed rage (-2147483648 to 2147483647), unsigned (0 to 4294967295)(4gb)
+BITINT
+
+
+DECIMAL(size,d)                        Fixed point number , default value for is 0
+                                       eg(999.99) is digit and 2 decimal (5,2)
+DEC(size,d)
+
+
+FLOAT(size,p)                          A floating point nubmer (approximate value)
+FLOAT(p)                               A floating point nubmer (approximate value) , p is optional , p is from 0 to 24
+DOUBLE(size,phone)                     A floating point nubmer (approximate value) , p is optional , p is from 25 to 53
+
+
+
+
+Note = DECIMAL for finance (Such a money)
+       FLOAT & DOUBLE for science app

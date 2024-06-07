@@ -1,0 +1,52 @@
+==>database list
+SHOW DATABASES;
+
+
+==>choose database;
+USE databasename; eg USE PATIENTS;
+
+==>delete database
+DROP DATABASE PATIENTS;
+
+=>about database naming
+*Do 
+CREATE DATABASE bookshop;
+CREATE DATABASE book_shop;
+
+==> Check tables from current db to another db;
+SHOW TABLES FROM databasename;
+SHOW TABLES in databasename;
+
+SHOW FULL TABLES FROM databasename;
+SHOW FULL TABLES in databasename;
+
+
+==>create tabel
+CREATE TABLE tablename(
+    column1 datatype1,
+    column1 datatype1,
+    column1 datatype1,
+    column1 datatype1,
+    .............
+);
+
+CREATE TABLE persons(
+    id INT,
+    firstname VARCHAR(225),
+    lastname VARCHAR (225),
+    city VARCHAR(255),
+    address VARCHAR(255),
+);
+
+CREATE TABLE IF NOT EXISTS persons(
+    id INT,
+    firstname VARCHAR(225),
+    lastname VARCHAR (225),
+    city VARCHAR(255),
+    address VARCHAR(255),
+);
+
+
+Drop Table
+DROP TABLE persons;
+DROP TABLE IF EXISTS persons;
