@@ -61,7 +61,46 @@ SELECT NOW(),NOW() - INTERVAL 10 SECOND;
 ..................................................................................................................................
 ==>LAST_DAY();
 
+
+
+=> DAT
 SELECT NOW(),LAST_DAY(NOW());
 SELECT LAST_DAY(CURRENT_DATE());
 SELECT LAST_DAY(CURDATE());
-SELECT LAST_DAY(CURRENT_TIMESTAMP());
+SELECT LAST_DAY(CURRENT_TIMESTAMP()-INTERVAL 1 MONTH);
+
+
+*Result = 31
+SELECT DAY(LAST_DAY(NOW()+INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURRENT_DATE()+INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURDATE()+INTERVAL 1 MONTH));
+SELECT DAY(LAST_DAY(CURRENT_TIMESTAMP()+INTERVAL 1 MONTH));
+
+
+..................................................................................................................................
+
+=> DATE_FORMAT (date,format)
+
+// Capital letter is long format and small letter is short format
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH ,'%Y-%m-01');  get the first day  2024-05-01
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH ,'%Y-%m-%d');  get the first day  
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH ,'%Y-%m-%D');  th day
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH ,'%Y-%M-%D');  Month and th day
+SELECT DATE_FORMAT(NOW()-INTERVAL 1 MONTH ,'%y-%M-%D'); 24 Month and th day
+
+//Date format need INTERVAL and but day format no need INTERVAL
+SELECT DAY(LAST_DAY(NOW())); // 30
+SELECT DAY(LAST_DAY(NOW())) - 1 DAY; // 29
+
+
+//Start to get first day of Date
+SELECT DATE_FORMAT(NOW(),'%Y-%m-01');  get the first day  2024-06-01
+SELECT DATE_SUB(LAST_DAY(NOW()),INTERVAL DAY(LAST_DAY(NOW()))-1 DAY);  //2024-06-01
+SELECT SUBDATE(LAST_DAY(NOW()),INTERVAL DAY(LAST_DAY(NOW()))-1 DAY);  //2024-06-01
+
+
+SELECT SUBDATE(LAST_DAY(NOW()),INTERVAL DAY(LAST_DAY(NOW()))-2 DAY);  //2024-06-02
+
+..................................................................................................................................
+
+
