@@ -1,0 +1,27 @@
+==>Primary Key
+
+Method 1
+CREATE TABLE IF NOT EXISTS workers 
+    ( id INT NOT NULL PRIMARY KEY,
+    firstname VARCHAR (50) NOT Null, 
+    lastname VARCHAR (50), 
+    age INT );
+
+Method 2
+    CREATE TABLE IF NOT EXISTS workers 
+    ( id INT NOT NULL,
+    firstname VARCHAR (50) NOT Null, 
+    lastname VARCHAR (50), 
+    age INT,
+    PRIMARY KEY (id));
+
+........................................................................................
+==> auto_increasement
+
+ CREATE TABLE IF NOT EXISTS engineers 
+    ( id INT NOT NULL AUTO_INCRESEMENT PRIMARY KEY,
+    firstname VARCHAR (50) NOT Null, 
+    lastname VARCHAR (50) not Null, 
+    age INT,
+    gender VARCHAR(6) NOT Null Default 'male'
+    );

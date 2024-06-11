@@ -1,0 +1,78 @@
+INSERT INTO TABELNAME( column1,column2,colum3....)
+VALUE (val1,val2,val3....);
+
+
+INSERT INTO TABELNAME( column1,column2,colum3....)
+VALUES (val1,val2,val3....),
+        (val1,val2,val3....)
+        (val1,val2,val3....)
+        .......................;
+
+INSERT INTO TABELNAME
+VALUES (val1,val2,val3....),
+        (val1,val2,val3....)
+        (val1,val2,val3....)
+        .......................;
+
+id   name  age  phone
+
+INSERT INTO TABELNAME('id','name','age,'phone')
+
+
+....................................................................................................
+
+==>Exercise
+
+
+CREATE TABLE IF NOT EXISTS persons (
+    id INT,
+    firstname VARCHAR(20),
+    lastname VARCHAR(20),
+    city VARCHAR(30),
+    address VARCHAR(200)
+);
+
+
+//Show Tables
+DESC persons;
+
+
+
+INSERT INTO persons (id,firstname,lastname,city,address)
+VALUE (1,'may','myatnoe','mandalay','Hno.27');
+
+INSERT INTO persons (id,firstname,lastname,city,address)
+VALUE (2,'nay','mon','mandalay','Street 28.27');
+
+INSERT INTO persons (id,firstname,lastname,city,address)
+VALUE (3,'moe','myint','yangon','yankin 23');
+
+INSERT INTO persons (id,firstname,lastname,city,address)
+VALUE (4,'min','ko','bago','ayetharyar Street');
+
+
+
+INSERT INTO persons VALUE (5,'aung','nay','moearkar','Aung Min Street');
+INSERT INTO persons VALUE (6,'nay','mon','mandalay','Street 28.27');
+
+
+
+SELECT * FROM persons;
+
+INSERT INTO persons (id,firstname,lastname,city,address)
+        VALUES (7,'myint','moe','ayeyarwady','Street25 st'),;
+                (8,'naing','lin','kalaw','Love street'),
+                (9,'toe','aung','singu','min yadanr ward'),
+                (10,'aung','kyaw','myintmuu','myitar st');
+
+
+INSERT INTO persons (id,firstname,lastname,city,address)
+        VALUES (11,'aung','ko','pyay','Street25 st'),
+                (12,'aung','htoo','naypyitaw','Taungtha street'),
+                (13,'aung','naing','saging','Kabaraye ward'),
+                (14,'aung','khaing','Kyauk','Thitsar st');
+
+
+SELECT * FROM persons;
+
+....................................................................................................

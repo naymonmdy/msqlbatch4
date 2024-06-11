@@ -1,0 +1,25 @@
+==>Default Value
+
+CREATE TABLE if NOT EXISTS mobiles(
+    brand VARCHAR(50),
+    madeby VARCHAR(50) Default 'China'
+);
+
+DESC mobiles;
+
+INSERT into mobiles (brand,madeby)
+    Value ('iphone','usa);
+
+
+
+INSERT into mobiles (brand,madeby)
+    Value ('nokia','japan');
+
+INSERT into mobiles (madeby)
+    Value ('usa);
+
+INSERT into mobiles ()
+    Value ('usa);
+
+SELECT * from mobiles;
+

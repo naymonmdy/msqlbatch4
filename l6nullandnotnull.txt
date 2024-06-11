@@ -1,0 +1,27 @@
+==> NULL and NOT NULL
+
+
+CREATE TABLE IF NOT EXISTS students(
+    name VARCHAR (10),
+    age INT(5)
+
+);
+
+DESC students;
+
+INSERT INTO students (name,age)
+VALUE ('aung aung',20);
+
+INSERT INTO students (name,age)
+VALUE ('su su','20');
+
+INSERT INTO students (name)
+VALUE ('yu yu');
+
+INSERT INTO students (age)
+VALUE ('90');
+
+INSERT INTO students VALUES();
+INSERT INTO students() VALUES();
+
+SELECT * FROM students;
