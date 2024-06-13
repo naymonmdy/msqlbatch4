@@ -1,0 +1,27 @@
+==>Replace (string,old,new);
+case sensitive 
+
+....................................................
+
+SELECT REPLACE ('Hello World,'Hell','Zell');
+
+
+
+SELECT REPLACE ('Hello World,'o','*');
+SELECT REPLACE ('Hello World,'l','7');
+
+
+SELECT REPLACE('coffee milk bread cheese',' ',' and ');
+
+REPLACE('coffee milk bread cheese',' ',' and ')
+coffee and milk and bread and cheese
+
+....................................................
+
+
+SELECT * FROM persons;
+
+SELECT CITY from PERSONS;
+
+SELECT REPLACE(city,'m','M') FROM PERSONS;
+SELECT REPLACE(city,'m','M') as capital FROM PERSONS;

@@ -1,0 +1,17 @@
+==>Syntax
+
+SELECT UPPER();
+
+
+SELECT LOWER();
+
+SELECT UPPER('Hello World');
+SELECT LOWER('Hello World');
+
+..................................................................................
+
+SELECT UPPER(firstname) FROM persons;
+SELECT LOWER(city) FROM persons;
+
+SELECT CONCAT_WS(' ',firstname,lastname,'live in',UPPER (city)) from persons;
+SELECT CONCAT_WS(' ',UPPER(firstname),LOWER(lastname),'live in',UPPER (city)) as personinfo from persons;

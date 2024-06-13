@@ -1,0 +1,11 @@
+=> CHAR_LENGTH (Start from 1);
+
+
+SELECT CHAR_LENGTH('Hello World');
+
+
+SELECT * FROM PERSONS;
+
+SELECT CHAR_LENGTH(firstname) from persons;
+
+SELECT firstname,CHAR_LENGTH('firstname') AS 'total count' FROM PERSONS;

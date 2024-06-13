@@ -8,7 +8,7 @@ CREATE TABLE if NOT EXISTS mobiles(
 DESC mobiles;
 
 INSERT into mobiles (brand,madeby)
-    Value ('iphone','usa);
+    Value ('iphone','usa');
 
 
 
@@ -16,10 +16,12 @@ INSERT into mobiles (brand,madeby)
     Value ('nokia','japan');
 
 INSERT into mobiles (madeby)
-    Value ('usa);
+    Value ('usa');
 
+//error
 INSERT into mobiles ()
-    Value ('usa);
+    Value (,'usa');
 
 SELECT * from mobiles;
 
+........................................................

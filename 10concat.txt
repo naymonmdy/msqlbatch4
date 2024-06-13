@@ -1,0 +1,36 @@
+=>CONCAT
+
+SELECT CONCAT (col1,col2,........)  FROM tablename;
+
+..................................................................................
+SELECT concat ('Hello','World');
+SELECT concat ('Hello',' ','World');
+SELECT concat ('Hello','......','World','.....','We are welcome');
+SELECT concat ('Hello', 12344);
+SELECT concat ('Hello', '12345');
+
+..................................................................................
+ CREATE TABLE IF NOT EXISTS suppliers 
+    ( id INT NOT NULL AUTO_INCREEMENT PRIMARY KEY,
+    firstname VARCHAR (50) NOT Null, 
+    lastname VARCHAR (50) not Null, 
+    age INT,
+    gender VARCHAR(6) NOT Null Default 'male'
+    );
+
+
+
+SELECT * from suppliers;
+SELECT firstname,lastname from suppliers;
+SELECT CONCAT (firstname,' ',lastname) from suppliers;
+SELECT CONCAT (firstname,' ',lastname) as fullname from suppliers;
+SELECT CONCAT (firstname,' ',lastname) as fullname,phone AS mobilephone  from suppliers;
+
+
+..................................................................................
+
+=> CONCAT_WS(delimiter,col1,col2,.............)
+
+SELECT CONCAT_WS ('-','Hello','World');
+SELECT CONCAT_WS (' ','Hello','World');
+SELECT CONCAT_WS ('......','Hello','World','We are welcome');

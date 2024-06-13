@@ -25,3 +25,31 @@ INSERT INTO students VALUES();
 INSERT INTO students() VALUES();
 
 SELECT * FROM students;
+
+.............................................................................
+==>NOT NULL
+
+
+CREATE TABLE IF NOT EXISTS employees(
+    name VARCHAR (10) NOT NUll,
+    age INT(3)
+
+);
+
+INSERT INTO employees (name,age)
+VALUE ('aung aung',20);
+
+INSERT INTO employees (name,age)
+VALUE ('su su','20');
+
+INSERT INTO employees (name)
+VALUE ('yu yu');
+
+
+//error
+INSERT INTO employees (age)
+VALUE ('90');
+
+//errro
+INSERT INTO employees VALUES();
+INSERT INTO employees() VALUES();

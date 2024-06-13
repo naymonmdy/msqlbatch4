@@ -1,0 +1,9 @@
+=>Syntax
+SELECT REVERSE ('Hello World');
+
+..................................................................................
+
+SELECT REVERSE (firstname) FROM persons;
+SELECT CONCAT ('woof','=',REVERSE('foow'));
+
+SSELECT CONCAT (firstname',' = ',REVERSE(firstname));ç

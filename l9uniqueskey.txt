@@ -1,0 +1,84 @@
+==>uniqueskey.
+
+
+DESCRIBE engineers;
+SHOW CREATE TABLE engineers;
+SHOW INDEX FROM engineers;
+
+
+
+DESCRIBE workers;
+SHOW CREATE TABLE workers;
+SHOW INDEX FROM workers
+.............................................................................................
+
+CREATE TABLE IF NOT EXISTS tablename (
+    col1 datatype1,
+    col2 datatype1,
+    col3 datatype1 uniqueskey,
+    ..........
+
+)
+
+
+.............................................................................................
+
+
+CREATE TABLE IF NOT EXISTS vpns (
+    id INT NOT NUll auto_increasement Primary KEY ,
+    name VARCHAR (30) UNIQUE,
+    score int NOT NULL
+)
+
+
+DESCRIBE vpns;
+SHOW CREATE TABLE vpns;
+SHOW INDEX FROM vpns
+
+
+INSERT INTO vpns (name,score)  Value ('1111','4');
+INSERT INTO vpns (name,score)  Values ('express','3') ,('pia',4),('1111',6);
+
+INSERT INTO vpns (name,score)  Value ('pia','4');
+
+
+
+CREATE TABLE IF NOT EXISTS proxyvpb (
+    id INT NOT NUll auto_increasement Primary KEY ,
+    name VARCHAR (30) UNIQUE,
+    score int NOT NULL
+)
+
+INSERT INTO proxyvpb (name,score)  Value ('1111','4');
+INSERT INTO proxyvpb (name,score)  Values ('express','3') ,('pia',4);
+
+
+.............................................................................................
+
+
+==>uniqueskey 
+CREATE TABLE IF NOT EXISTS users (
+    id INT NOT NUll auto_increment Primary KEY ,
+    firstname VARCHAR (30) NOT Null,
+    lastname VARCHAR (30) NOT Null,
+    email VARCHAR (50) NOT NUll,
+    password VARCHAR (50) NOT NUll,
+    phone VARCHAR (50) NOT NUll,
+)
+
+
+DESCRIBE users;
+SHOW CREATE TABLE users;
+SHOW INDEX FROM users;
+
+ALTER TABLE users add UNIQUE(email);
+
+INSERT INTO users (firstname,lastname,email,password,phone) 
+                     Values ('aung','aung','aung@gmail.com','123','09987') ,
+                    ('naung','aung','naung@gmail.com','342','09987') ,
+                    ('maung','aung','maung@gmail.com','324','09987'),
+                    ('saung','aung','saung@gmail.com','232','09987') ;
+
+#error
+INSERT INTO users (firstname,lastname,email,password,phone)  value
+                    ('saung','aung','saung@gmail.com','232','09987') ;

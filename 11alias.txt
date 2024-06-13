@@ -1,0 +1,17 @@
+=> Alias 
+
+SELECT columns AS Alias FROM tablename;
+
+
+..................................................................
+ CREATE TABLE IF NOT EXISTS suppliers 
+    ( id INT NOT NULL AUTO_INCREEMENT PRIMARY KEY,
+    firstname VARCHAR (50) NOT Null, 
+    lastname VARCHAR (50) not Null, 
+    age INT,
+    gender VARCHAR(6) NOT Null Default 'male'
+    );
+
+
+SELECT id, firstname AS fsrname from suppliers;
+SELECT id, firstname AS fsrname,lastname AS lstname from suppliers;

@@ -25,3 +25,21 @@ Method 2
     age INT,
     gender VARCHAR(6) NOT Null Default 'male'
     );
+
+
+INSERT INTO engineers (firstname,lastname,age)  Value ('Nay','Zin',30);
+INSERT INTO engineers (firstname,lastname,age)  Value ('Myo','Win',20);
+INSERT INTO engineers (firstname,lastname,age,gender)  Value ('Moe','Myint',10,'female');
+
+INSERT INTO engineers (firstname,lastname,age)  Value ('khine','Zin',10,'female');
+INSERT INTO engineers (firstname,lastname,age)  Value ('aung','kyaw',20);
+INSERT INTO engineers (firstname,lastname,age,gender)  Value ('tae','zar',20);
+
+
+INSERT INTO engineers (firstname,lastname,age)  Value ('myo','Zin',23);
+INSERT INTO engineers (firstname,lastname,age)  Value ('aung','kyaw',20);
+INSERT INTO engineers (firstname,lastname,age,gender)  Value ('tae','zar',20);
+
+INSERT INTO engineers (firstname,lastname,age)  Value ('khine','Zin',10,'female');
+INSERT INTO engineers (firstname,lastname,age)  Value ('aung','kyaw',20);
+INSERT INTO engineers (firstname,lastname,age,gender)  Value ('tae','zar',20);
