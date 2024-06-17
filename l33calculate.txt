@@ -1,0 +1,27 @@
+==>COUNT()
+==>SUM()
+==>AVERAGE()
+==>MIN()
+==>MAX()
+
+AGGREGATE FUNCTION
+
+==>COUNT()
+SELECT COUNT() FROM Tabelname
+WHERE Condition;
+
+==>SUM()
+SELECT SUM() FROM Tabelname
+WHERE Condition;
+
+==>AVERAGE()
+SELECT AVERAGE() FROM Tabelname
+WHERE Condition;
+
+==>MIN()
+SELECT MIN() FROM Tabelname
+WHERE Condition;
+
+==>MAX()
+SELECT MAX() FROM Tabelname
+WHERE Condition;

@@ -1,0 +1,31 @@
+-limit clause use in HTML Pagination;
+
+SELECT col1,col2 FROM Tabelname 
+WHERE condition 
+ORDER BY col
+LIMIT number;
+
+
+SELECT id,firstName,lastName,age,gender FROM engineers 
+WHERE age < 20
+ORDER by age;
+
+
+SELECT id,firstName,lastName,age,gender FROM engineers 
+WHERE age < 20
+ORDER by age
+limit 5;
+
+
+SELECT id,firstName,lastName,age,gender FROM engineers 
+WHERE age < 20
+ORDER by age DESC
+limit 5;
+
+
+SELECT id,firstName,lastName,age,gender FROM engineers 
+WHERE age >= 20
+ORDER by age DESC
+limit 5;
+..................................................................................
+

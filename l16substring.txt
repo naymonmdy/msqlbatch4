@@ -1,0 +1,27 @@
+==>Substring $SUBSTR (Start 1)
+
+substring ('string,start,end);
+
+
+
+SELECT SUBSTRING (string,start,end);
+SELECT SUBSTR (string,start,end);
+
+.................................................................................
+
+=>EXERCISE
+
+SELECT SUBSTRING('Hello World',1,5); //Hello
+SELECT SUBSTRING('Hello World',2,4); //ello
+
+SELECT SUBSTRING('Hello World',7); //World
+SELECT SUBSTRING('Mysql Online Class',7); // Online Class
+SELECT SUBSTRING('Hello, I\'m Mr.Nay Mon',1,10);  //Hello, I'm
+
+
+SELECT address, CONCAT(address,SUBSTRING(1,9),'.......') AS street from persons;
+
+
+SELECT address, CONCAT(REPLACE(SUBSTRING(address,1,9),'n','N'),'.......') AS street from persons;
+.................................................................................
+

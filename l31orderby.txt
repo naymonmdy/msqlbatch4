@@ -1,0 +1,31 @@
+Order By (Sorting Result)
+
+SELECT col1,col2,col3 FROM Tabelname
+ORDER BY col ASC /DESC;
+..................................................................................................................................
+
+SELECT * FROM engineers
+ORDER BY firstName ASC;
+
+SELECT * FROM engineers
+ORDER BY firstName;
+
+SELECT * FROM engineers
+ORDER BY firstName DESC;
+
+SELECT * FROM engineers
+ORDER BY age ASC;
+
+SELECT * FROM engineers
+WHERE age > 20
+ORDER BY age DESC;
+
+SELECT * FROM engineers
+WHERE age < 20
+ORDER BY age ASC;
+
+SELECT id,firstName,lastName,age,gender FROM engineers ORDER by 2;
+SELECT id,firstName,lastName,age,gender FROM engineers ORDER by 4;
+SELECT id,firstName,lastName,age,gender FROM engineers ORDER by 3;
+SELECT id,firstName,lastName,age,gender FROM engineers ORDER by 5;
+..................................................................................................................................

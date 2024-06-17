@@ -8,4 +8,8 @@ SELECT * FROM PERSONS;
 
 SELECT CHAR_LENGTH(firstname) from persons;
 
-SELECT firstname,CHAR_LENGTH('firstname') AS 'total count' FROM PERSONS;
+SELECT firstname,CHAR_LENGTH(firstname) AS 'total count' FROM PERSONS;
+
+SELECT CONCAT(firstname,' is ',CHAR_LENGTH(firstname),' character long') AS length FROM persons;
+
+SELECT firstname, CONCAT(firstname,' is ',CHAR_LENGTH(firstname),' character long') AS length FROM persons;

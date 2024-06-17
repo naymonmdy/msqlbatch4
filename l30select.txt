@@ -1,0 +1,62 @@
+==>SELECT with where Clause
+
+SELECT * FROM Tabelname where condition;
+
+SELECT col1 FROM Tabelname where condition;
+
+..................................................................................................................................
+
+* No case sensitive but need to same words******
+
+SELECT * FROM persons WHERE city ='Mandalay';
+
+SELECT * FROM persons WHERE city ='MANDALAY';
+
+SELECT firstName,lastName FROM persons WHERE city ='mandalay';
+
+SELECT firstName,lastName FROM persons WHERE city LIKE 'Yangon';
+
+SELECT firstName,lastName FROM persons WHERE city LIKE 'yangon';
+
+SELECT firstName,lastName FROM persons WHERE city LIKE 'YANGON';
+
+SELECT firstName,lastName FROM persons WHERE id = 11;
+
+SELECT firstName,lastName FROM persons WHERE id LIKE 11';
+
+..................................................................................................................................
+
+!= or NOT or <> 
+
+SELECT * FROM persons WHERE city != 'Mandalay';
+SELECT * FROM persons WHERE city <> 'Mandalay';
+SELECT * FROM persons WHERE NOT city = 'Mandalay';
+
+SELECT * FROM persons WHERE NOT city LIKE 'Mandalay';
+SELECT * FROM persons WHERE city NOT LIKE 'Mandalay';
+
+..................................................................................................................................
+<  >   <=   >=
+
+SELECT * FROM engineers WHERE age = 20;
+SELECT * FROM engineers WHERE age <= 18;
+SELECT * FROM engineers WHERE age > 40;
+SELECT * FROM engineers WHERE age >= 20;
+SELECT * FROM engineers WHERE age <> 20;
+SELECT * FROM engineers WHERE age != 20;
+
+..................................................................................................................................
+
+BETWEEN With AND
+
+SELECT * FROM engineers WHERE age BETWEEN 18 AND 30;
+
+SELECT * FROM engineers WHERE age BETWEEN 18 AND 30 AND gender = 'male';
+
+SELECT * FROM engineers WHERE age NOT BETWEEN 18 AND 30 AND gender = 'male';
+
+SELECT * FROM engineers WHERE gender= "female" and age NOT BETWEEN 18 AND 30';
+
+SELECT * FROM engineers WHERE gender= "female" and age BETWEEN 18 AND 30';
+
+..................................................................................................................................
