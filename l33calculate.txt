@@ -25,3 +25,97 @@ WHERE Condition;
 ==>MAX()
 SELECT MAX() FROM Tabelname
 WHERE Condition;
+
+
+CREATE TABLE IF NOT EXISTS Customers 
+( id int not null autoincrement , 
+firstname  varchar(30) not null,
+lastname  varchar(30) not null,
+age int not null,
+gender  varchar(30) not null,
+city  varchar(30) not null,
+amount decimal(8,2) default 0,
+primary key (id)
+);
+
+Describe Customers;
+SHOW Index from Customers;
+SHOW Create TABLE Customers;
+
+Insert into Customers (firstname,lastname,age,gender,city,amount)
+values ('nay','mon',23,'male','mandalay',230000),
+('naw','aung',23,'female','mandalay',400000),
+('su','aung',23,'female','mandalay',480000),
+('aung','mone',23,'male','mandalay',120000),
+('aye','min',23,'male','mandalay',500000),
+('kaung','mon',23,'male','mandalay',80000),
+('toe','aung',23,'male','mandalay',90000),
+('chan','mon',23,'male','mandalay',200000),
+('naing','win',23,'male','mandalay',580000),
+('phyo','wai',23,'female','mandalay',670000),
+('su','mon',23,'female','mandalay',90000),
+('min','mon',23,'male','mandalay',230000),
+('myo','aung',23,'female','mandalay',400000),
+('moe','aung',23,'female','mandalay',480000),
+('mone','mone',23,'male','mandalay',120000),
+('saung','min',23,'male','mandalay',500000),
+('aye','mon',23,'male','mandalay',80000),
+('saug','aung',23,'male','mandalay',90000),
+('san','mon',23,'male','mandalay',200000),
+('myaing','win',23,'male','mandalay',580000),
+('wai','wai',23,'female','mandalay',670000),
+('nu','mon',23,'female','mandalay',90000);;
+...........................................................................................
+
+
+==COUNT()
+SELECT COUNT (*) from Customers where amount > 240000;
+SELECT COUNT(amount) from Customers where amount>100000;
+SELECT COUNT(firstName) from Customers where firstName = 'aung';
+SELECT COUNT(id) from Customers where firstName = 'aung';
+...........................................................................................
+
+==SUM()
+
+SELECT SUM(amount) from Customers where city = 'mandalay';
+SELECT SUM(amount) from Customers where amount > 100000';
+SELECT SUM(amount) from Customers where city = 'yangon';
+
+...........................................................................................
+
+==AVG()
+SELECT AVG(amount) from Customers where city = 'mandalay';
+SELECT AVG(age) from Customers where city ='yangon';
+
+...........................................................................................
+
+==MIN()
+SELECT MIN(amount) from Customers where city = 'yangon';
+SELECT MIN(CONCAT(firstName,lastName)) from Customers where city = 'yangon';
+
+SELECT MIN(CONCAT(firstName,' ',lastName)),amount from Customers where city = 'yangon';
+
+SELECT * FROM Customers
+WHERE amount = (SELECT MIN(amount) FROM Customers
+WHERE city = 'yangon');
+
+SELECT * FROM Customers
+WHERE amount = ( SELECT MIN(amount) FROM Customers);
+
+...........................................................................................
+
+==MAX()
+
+SELECT MAX(amount) from Customers;
+
+SELECT * FROM Customers 
+WHERE amount = (SELECT MAX(amount) FROM Customers);
+
+SELECT * FROM Customers 
+WHERE amount = (SELECT MAX(amount) FROM Customers WHERE city = "yangon");
+
+
+SELECT * FROM Customers 
+WHERE amount = (SELECT MAX(amount) FROM Customers WHERE city = "mandalay");
+
+...........................................................................................
