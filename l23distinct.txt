@@ -1,0 +1,11 @@
+//DISTINCT
+
+//Syntax => SELECT DISTINCT col1,col2 FROM Tabelname;
+
+........................................................
+SELECT * FROM customers;
+
+SELECT city FROM customers;
+
+SELECT DISTINCT city FROM customers;
+

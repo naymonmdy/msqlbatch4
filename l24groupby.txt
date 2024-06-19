@@ -1,0 +1,11 @@
+//GROUP BY
+Syntax => SELECT col1,col2 FROM Tabelname WHERE condition GROUP BY col1,col2,col3,
+
+.......................................................................................
+
+SELECT DISTINCT city FROM customers
+GROUP BY city;
+
+
+SELECT DISTINCT age FROM customers 
+GROUP BY age;

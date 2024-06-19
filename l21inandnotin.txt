@@ -1,0 +1,79 @@
+//IN and NOT IN
+
+//IN
+result = 1; // true
+SELECT 10 in (20,34,202,12,23,10);
+
+
+result = 0; // false
+SELECT 10 in (100,200,300,400,34,202);
+
+result = 1; // true
+SELECT 'aung aung' in ('maung maung','aung aung','soe soe','myo myo');
+
+result = 1; // true
+SELECT 'aung' in ('maung maung','aung aung','soe soe','myo myo');
+
+
+result = 0; // false
+SELECT 'min min' in ('maung maung','aung aung','soe soe','myo myo');
+
+
+
+//NOT IN
+result = 0; // false
+SELECT 10 NOT in (20,34,202,12,23,10);
+
+
+result = 1; // true
+SELECT 10 NOT in (100,200,300,400,34,202);
+
+result = 0; // false
+SELECT 'aung aung' NOT in ('maung maung','aung aung','soe soe','myo myo');
+
+result = 0; // false
+SELECT 'aung' NOT in ('maung maung','aung aung','soe soe','myo myo');
+
+
+result = 1; // true
+SELECT 'min min' NOT in ('maung maung','aung aung','soe soe','myo myo');
+............................................................................
+//IN
+SELECT * from customers 
+where city = 'mandalay';
+
+SELECT * from customers 
+where city in ('mandalay');
+
+
+SELECT * from customers 
+where city = 'mandalay' or city="yangon';
+
+SELECT * from customers 
+where city in ('mandalay','yangon');
+
+SELECT * from customers 
+where city in ('mandalay','yangon');
+
+SELECT * from customers 
+where city in ('mandalay','yangon')
+Order by city ASC;
+............................................................................
+//NOT IN
+
+SELECT * from customers 
+where city != 'mandalay';
+
+SELECT * from customers 
+where city NOT in ('mandalay');
+
+SELECT * from customers 
+where city NOT in ('mandalay','yangon');
+
+SELECT * from customers 
+where city NOTin ('mandalay','yangon');
+
+SELECT * from customers 
+where city NOT in ('mandalay','yangon')
+Order by city DESC;
+............................................................................

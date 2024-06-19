@@ -1,0 +1,40 @@
+SELECT col from tabel where column like pattern;
+
+
+LIKE operator
+
+SELECT * FROM customers 
+WHERE city like '%a';              end with a character;
+WHERE city like 'a%';              start with a character;
+WHERE city like '%na%';            contains na character;
+WHERE city like 'r_';              first character r and at least 2 character;
+WHERE city like 'r__';              first character r and at least 3 character;
+WHERE city like '_r%';              any values and second character r;
+WHERE city like 'a%o';              start with a and end with o;
+
+
+....................................................................
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE '%ng';
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE 'au%g;
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE 'mg%';
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE '__a%';
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE '%ag%';
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE '%un%';
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE '%un';
+
+SELECT firstname,lastname,age,city from customers 
+WHERE firstname LIKE 'a___%;
