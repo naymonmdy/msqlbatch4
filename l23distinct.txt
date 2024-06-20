@@ -1,4 +1,4 @@
-//DISTINCT
+//DISTINCT for remove dublicate
 
 //Syntax => SELECT DISTINCT col1,col2 FROM Tabelname;
 
@@ -8,4 +8,15 @@ SELECT * FROM customers;
 SELECT city FROM customers;
 
 SELECT DISTINCT city FROM customers;
+
+
+SELECT DISTINCT city FROM customers ORDER by city;
+
+SELECT DISTINCT age FROM customers ORDER by age;
+
+SELECT DISTINCT age,city FROM customers ORDER by age;
+
+SELECT count(DISTINCT city) FROM customers;
+
+
 

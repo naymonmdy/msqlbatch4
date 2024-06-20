@@ -1,0 +1,53 @@
+//GROUP BY
+Syntax => SELECT col1,col2 FROM Tabelname WHERE condition GROUP BY col1,col2,col3,
+
+.......................................................................................
+
+SELECT DISTINCT city FROM customers
+GROUP BY city;
+
+
+SELECT DISTINCT age FROM customers 
+GROUP BY age
+...............................................
+
+SELECT city FROM customers GROUP BY city;
+
+SELECT city,COUNT(*) FROM customers GROUP BY city;
+
+
+......................................................
+
+SUM,MIN,MAX
+
+SELECT age,COUNT(*) FROM customers
+GROUP BY age 
+ORDER BY age ASC;
+
+
+SELECT amount,COUNT(*) FROM customers
+GROUP BY amount ;
+
+SELECT city,SUM(amount) FROM customers
+GROUP BY city;
+
+SELECT city,min(amount) FROM customers
+GROUP BY city;
+
+SELECT city,MAX(amount) FROM customers
+GROUP BY city;
+
+
+SELECT city,count(*),MAX(amount) FROM customers
+GROUP BY city;
+
+SELECT city,count(*),MIN(amount) FROM customers
+GROUP BY city;
+
+SELECT city,count(*),AVG(amount) FROM customers
+GROUP BY city;
+
+SELECT CONCAT("customers in" ,city) AS "showCity",
+MAX(amount) FROM customers GROUP BY city;
+
+......................................................

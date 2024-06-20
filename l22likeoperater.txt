@@ -38,3 +38,14 @@ WHERE firstname LIKE '%un';
 
 SELECT firstname,lastname,age,city from customers 
 WHERE firstname LIKE 'a___%;
+....................................................................
+LIKE is anything
+
+WHERE firstname LIKE '_____';// 5 length
+
+WHERE firstname LIKE '%';// any character
+
+WHERE firstname LIKE '\_%';// for eg  _facebook;
+
+WHERE firstname LIKE '%\_%';// for eg facebook_name;
+

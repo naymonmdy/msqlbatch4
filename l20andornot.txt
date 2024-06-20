@@ -1,0 +1,31 @@
+//AND OR NOT 
+
+==>Syntax
+
+==AND
+SELECT * FROM Tabelname WHERE condition1 and condition2 and condition3
+
+..................................................................................
+
+==>OR
+SELECT * FROM Tabelname WHERE condition1 or condition2 or condition3
+
+..................................................................................
+
+
+==>NOT
+SELECT * FROM Tabelname WHERE NOT condition1;
+
+SELECT * FROM customers WHERE NOT city = 'Yangon';
+
+..................................................................................
+
+
+SELECT * FROM customers
+WHERE  city = "Yangon" and city = "mandalay";
+
+SELECT * FROM customers
+WHERE city ="mandalay"  AND NOT age =40;
+
+SELECT * FROM customers
+WHERE city ="yangon" AND NOT gender ="male" AND NOT age =21;

@@ -1,0 +1,30 @@
+//Having
+
+SELECT col1,col2,col3 FROM Tabelname
+GROUP BY co1,col2
+HAVING condition;
+
+
+SELECT count(*),city FROM customers
+GROUP BY city;
+
+SELECT count(*),city FROM customers
+WHERE city like "ma%"
+GROUP BY city;
+
+SELECT count(*),city FROM customers
+GROUP BY city
+HAIVG city like "ma%";
+
+SELECT city,SUM(amount) FROM customers
+GROUP BY city;
+
+
+*error
+SELECT city,SUM(amount) FROM customers
+WHERE sum(amount) >150000
+GROUP BY city;
+
+SELECT city,SUM(amount) FROM customers
+GROUP BY city
+HAVING sum(amount) >1500000;
