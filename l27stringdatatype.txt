@@ -28,3 +28,53 @@ A fixed length String
 eg.phone , zip code , Yes/No ,Male,Female M/F
 
 ...................................................................................................................................
+
+DESC Table;
+SHOW CREATE TABLE TABLENAME;
+
+CREATE table if not exists contacts(
+    name CHAR(5),
+    city VARCHAR(10),
+)
+
+*Error >length
+Insert into contacts(name,city) value
+('aung aung','mandalay');
+
+
+*Error > nothing to length >10
+CREATE TABLE if NOT exists myjobs(
+    id INT,
+    content varchar (10) DEFAULT ("nothing to show")
+    );
+
+
+CREATE TABLE if NOT exists myjobs(
+    id INT,
+    content varchar (20) DEFAULT ("nothing to show")
+    );
+
+
+
+CREATE TABLE if NOT exists myworks(
+    id INT,
+    content varchar (255) DEFAULT ("nothing to show"),
+    message TEXT 
+    );
+    
+    
+DESC myworks;
+SHOW CREATE table myworks;
+
+
+INSERT into myworks (id,content,message) VALUES
+(1,'Hello','Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum');
+
+
+*Error due to DEFAULT error in TEXT data type
+CREATE TABLE if NOT exists mytasks(
+    id INT DEFAULT (10),
+    content varchar (255) DEFAULT ("nothing to show"),
+    message TEXT DEFAULT ("Nothing adding in message";)
+    );
+    

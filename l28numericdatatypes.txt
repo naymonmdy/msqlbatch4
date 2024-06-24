@@ -32,3 +32,93 @@ DOUBLE(size,phone)                     A floating point nubmer (approximate valu
 
 Note = DECIMAL for finance (Such a money)
        FLOAT & DOUBLE for science app
+
+
+
+CREATE Table if not exists items(
+       name VARCHAR(10),
+       price int,
+       status int
+
+)
+
+Insert into items (name , price)
+value ('water',100),
+       ('coffee',500),
+       ('cake',800),
+       ('snack',500),
+       ('jam',100.34);
+
+Insert into items (name , price,status)
+value ('redbull',100,0),
+       ('sponsor',500,1),
+       ('joey',800,0),
+       ('doeo',500,1),
+       ('hyoe',100.34,1);
+
+CREATE Table if not exists proitems(
+       name VARCHAR(20),
+       purchaseprice int(4),
+       sellprice int(4) UNSIGNED
+
+)
+
+DESC proitems;
+SHOW CREATE TABLE proitems;
+
+Insert into proitems (name , purchaseprice,sellprice)
+value ('water',9000,9500),
+       ('coffee',-100,200),
+       ('cake',800,100),
+       ('snack',-250.56,350.77),
+       ('jam',-1000,2000);
+
+UNSIGNED used in not to be negative and DEFAULT is SIGNED
+...................................................................................................................................
+
+
+DECIMAL is Fixed point
+
+
+DECIMAL(5,2)
+eg(999.99)
+
+DECIMAL(5,3)           = 20.234
+eg        20.5         = 20.500
+eg        20.523532334 = 20.524
+
+
+
+
+CREATE Table if not exists sellitems(
+       name VARCHAR(20),
+       price decimal(6,2)
+
+)
+
+DESC sellitems;
+SHOW CREATE Table sellitems;
+
+//100.43
+Insert into sellitems (name,price) value
+('coffee',100.43);
+
+//1000.01
+Insert into sellitems (name,price) value
+('redbull',1000.01);
+
+//1000.99
+Insert into sellitems (name,price) value
+('redbull',1000.99);
+
+Insert into sellitems (name,price) value
+('redbull2',1000.9956);
+
+
+//1000.98
+Insert into sellitems (name,price) value
+('sponsor',1000.98);
+
+//1000.86
+Insert into sellitems (name,price) value
+('sponsor2',1000.8556);
