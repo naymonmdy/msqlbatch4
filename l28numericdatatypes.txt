@@ -122,3 +122,42 @@ Insert into sellitems (name,price) value
 //1000.86
 Insert into sellitems (name,price) value
 ('sponsor2',1000.8556);
+.......................................................
+
+CREATE Table if not exists shoppings(
+       name VARCHAR(20),
+       purchasepriceprice float,
+       sellprice float(4)
+)
+
+
+
+
+Insert into shoppings (name , purchasepriceprice,
+,sellprice)
+value ('redbull',100,100),
+       ('sponsor',500,500.4),
+       ('joey',800,900.67),
+       ('doeo',500,4000.322),
+       ('hyoe',.34,9000,1000012232.12);
+
+* FLOAT and DECIMAL NOT USING IN CURRECY AND FINACIAL AMOUNT *
+
+.......................................................
+CREATE Table if not exists buyings(
+       name VARCHAR(20),
+       purchaseprice float,
+       sellprice double
+)
+
+
+Insert into buyings (name , purchaseprice,sellprice)
+value ('redbull',100,100),
+       ('sponsor',500,500.4),
+       ('joey',800,900.67),
+       ('doeo',500,4000.322),
+       ('hyoe',.34,9000,1000012232.12);
+.......................................................
+
+
+e/E use for 2000000,  eg 2e6 and 30000 and 3e4 for numerical value

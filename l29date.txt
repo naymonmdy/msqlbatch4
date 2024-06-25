@@ -103,3 +103,91 @@ SELECT SUBDATE(LAST_DAY(NOW()),INTERVAL DAY(LAST_DAY(NOW()))-2 DAY);  //2024-06-
 
 ..................................................................................................................................
 
+CREATE Table if not exists vipcustomers(
+    id INT NOT Null auto_increment,
+    name VARCHAR(200),
+    birthdate Date,
+    birthtime TIME,
+    year YEAR,
+    city VARCHAR(20),
+    primary key (id)
+)
+
+DESC vipcustomers;
+SHOW CREATE Table vipcustomers;
+SHOW index from vipcustomers;
+
+
+Insert into vipcustomers (name,birthdate,birthtime,year,city)
+Values('naymon','1993-05-22','10:32:34',1993,'mandalay'),
+('naymon','1993-05-22','10:32:34',1993,'mandalay'),
+('naymon','1993-05-22','10:32:34',1993,'mandalay'),
+('naymon','1993-05-22','10:32:34',1993,'mandalay);
+
+SELECT name,birthdate from vipcustomers;
+SELECT name,birthdate,Day(birthdate) from vipcustomers;
+SELECT name,birthdate,Day(birthdate),DAYNAME(birthdate) from vipcustomers;
+SELECT name,birthdate,Day(birthdate),DAYNAME(birthdate),DAYOFWEEK(birthdate) from vipcustomers;
+SELECT name,birthdate,Day(birthdate),DAYNAME(birthdate),DAYOFWEEK(birthdate),DAYOFYEAR(birthdate) from vipcustomers;
+
+
+SELECT name,birthdate,MONTH(birthdate) from vipcustomers;
+SELECT name,birthdate,MONTH(birthdate),MONTHNAME(birthdate),YEAR(birthdate) from vipcustomers;
+
+SELECT name,birthtime,HOUR(birthtime) from vipcustomers;
+SELECT name,birthtime,MINUTE(birthtime) from vipcustomers;
+SELECT name,birthtime,SECOND(birthtime) from vipcustomers;
+
+
+SELECT name,birthdate, CONCAT(year(birthdate),'-',MONTHNAME(birthdate),'-',day(birthdate)) as date from vipcustomers;
+
+
+SELECT name,birthdate from vipcustomers
+Where  year(birthdate) between 2001 and 2005;
+
+SELECT name,birthdate,city from vipcustomers
+Where  year(birthdate) between 1991 and 2005 and city in ('mandalay','yangon');
+
+
+SELECT name,birthdate from vipcustomers
+Where  Month(birthdate) <6;
+
+...............................................................
+
+DATEADD /ADD DATE
+
+SELECT * from vipcustomers ;
+
+SELECT name,birthdate from vipcustomers;
+SELECT name,birthdate, birthdate + INTERVAL 1 Month from vipcustomers;
+SELECT name,birthdate,DATE_ADD(birthdate , INTERVAL 1 Month) from vipcustomers;
+SELECT name,birthdate,ADDDATE(birthdate , INTERVAL 1 Month) from vipcustomers;
+
+
+SELECT name,birthdate from vipcustomers;
+SELECT name,birthdate, birthdate + INTERVAL 1 Day from vipcustomers;
+SELECT name,birthdate,DATE_ADD(birthdate , INTERVAL 1 Day) from vipcustomers;
+SELECT name,birthdate,ADDDATE(birthdate , INTERVAL 1 Day) from vipcustomers;
+
+
+SELECT name,birthdate from vipcustomers;
+SELECT name,birthdate, birthdate + INTERVAL 1 QUARTER from vipcustomers;
+SELECT name,birthdate,DATE_ADD(birthdate , INTERVAL 2 QUARTER) from vipcustomers;
+SELECT name,birthdate,ADDDATE(birthdate , INTERVAL 3 QUARTER) from vipcustomers;
+
+
+
+SELECT name,birthdate from vipcustomers;
+SELECT name,birthdate, (birthdate + INTERVAL 1 year + INTERVAL 1 month + INTERVAL 1 HOUR +INTERVAL 15 MINUTE + interval 30 SECOND) from vipcustomers;
+
+
+
+CREATE Table if not exists comments(
+    content VARCHAR (200),
+    created_at TIMESTAMP default Now();
+)
+
+Insert into comments (content)
+Values ('Hi'),
+        ('what'),
+        ('How are you');
