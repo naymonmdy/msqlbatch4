@@ -191,3 +191,45 @@ Insert into comments (content)
 Values ('Hi'),
         ('what'),
         ('How are you');
+ ...................................................
+
+CREATE Table if not exists feedbacks(
+    content VARCHAR(20),
+    created_at TIMESTAMP default NOW(),
+    updated_at TIMESTAMP default Now()
+);
+
+DESC feedbacks;
+Show create table feedbacks;
+
+Insert into feedbacks (content) Values
+('this is funny'),('how sweet'),('how wonderful'),('pretty good');
+
+Insert into feedbacks (content) Values
+('how are you'),('so sweet'),('so nice');
+
+SELECT * from feedbacks;
+
+Update feedbacks set content = "Bleh....Bleh"
+Where content="so sweet";
+ ...................................................
+
+CREATE Table if not exists advices(
+    content VARCHAR(20),
+    created_at TIMESTAMP default CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP default CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+DESC advices;
+Show create table advices;
+
+Insert into advices (content) Values
+('this is funny'),('how sweet'),('how wonderful'),('pretty good');
+
+Insert into advices (content) Values
+('how are you'),('so sweet'),('so nice');
+
+SELECT * from advices;
+
+Update advices set content = "Bleh....Bleh"
+Where content="so sweet";

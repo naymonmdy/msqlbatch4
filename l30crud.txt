@@ -1,0 +1,94 @@
+==>CURD
+
+CREATE DATABASE IF NOT EXISTS shirtsdb;
+
+SHOW DATABASES;
+
+
+
+==>CREATE
+
+CREATE TABLE IF NOT EXISTS shirts(
+    id INT NOT NULL auto_increment,
+    article VARCHAR (100),
+    color VARCHAR (100),
+    size VARCHAR (100),
+    PRIMARY KEY(ID)
+);
+
+
+DESC shirts;
+SHOW CREATE TABLE shirts;
+
+
+INSERT INTO shirts (article,color,size) Value
+('t-shirt','white','S');
+
+INSERT INTO shirts (article,color,size) Values
+('t-shirt','green','S'),
+('polo-shirt','pink','M'),
+('tent-top','red','S'),
+('t-shirt','white','S'),
+('polo-shirt','green','M'),
+('sport-shirt','red','L'),
+('t-shirt','green','Xl'),
+('polo-shirt','green','M');
+
+
+SELECT * FROM shirts;
+
+SELECT article,color,size FROM shirts
+WHERE size ="M";
+
+SELECT article,color,size FROM shirts
+WHERE size ="S";
+
+SELECT article,color,size FROM shirts
+WHERE article ="polo-shirt";
+
+.......................................................
+
+==>UPDATE (Multi or bulk update)
+UPDATE shirts SET size="L" WHERE article ="polo-shirt";
+
+SELECT * from shirts;
+UPDATE shirts SET color="black" WHERE article = "t-shirt";
+
+
+==>UPDATE (Single)
+
+SELECT * from shirts WHERE article = "sport-shirt";
+UPDATE shirts SET color="violet" WHERE id = 8;
+SELECT * from shirts;
+
+
+SELECT * from shirts WHERE id = 9;
+UPDATE shirts set color="steelblue",size="xs" WHERE id =9;
+
+.......................................................
+
+==>DELETE (Multi or bulk DELETE)
+
+DELETE FROM shirts  WHERE article ="polo-shirt";
+DELETE FROM shirts WHERE color="black" and article = "t-shirt";
+DELETE FROM shirts WHERE article = "sport-shirt";
+
+
+==>UPDATE (Single)
+DELETE FROM shirts  WHERE id =9;
+
+
+==>TRUNCATE (all clear data from table)
+TRUNCATE TABLE shirts;
+
+==>TRUNCATE  TABLE tablename(all clear data from table)
+TRUNCATE TABLE shirts;
+
+
+==>DROP TABLE tablename (permennant delete table);
+DROP TABLE shirts if EXISTS;
+
+==>DROP DATABASE databasename (delete DATABASE);
+DROP DATABASE shirtsdb if EXISTS;
+.......................................................
+

@@ -1,0 +1,6 @@
+=> IF FUNCTION
+
+IF (condition ,ture ,false );
+
+SELECT IF (100>20,"true","false"); //True
+SELECT IF (100<20,"true","false"); //False
