@@ -4,3 +4,96 @@ IF (condition ,ture ,false );
 
 SELECT IF (100>20,"true","false"); //True
 SELECT IF (100<20,"true","false"); //False
+
+SELECT * From customers;
+
+
+SELECT firstname,lastname,age,gender,
+    if(age>= 18,"elder","young") AS "age verify"
+From customers ;
+
+
+SELECT *,
+    if(age>= 18,"elder","young") AS "age verify"
+From customers ;
+
+..................................................................
+==>TRUNCATE () FUNCTION
+
+TRUNCATE(number,decimals);
+
+SELECT TRUNCATE(123.456,3);//123.456
+SELECT TRUNCATE(123.456,2);//123.45
+SELECT TRUNCATE(123.456,1);//123.4
+
+
+SELECT * from sellitems;
+
+SELECT name,price,
+    TRUNCATE(price,1) AS oneD
+From sellitems;
+
+SELECT *,
+    TRUNCATE(price,1) AS oneD
+From sellitems;
+..................................................................
+
+==>ROUND () FUNCTION
+
+ ROUND(number,decimals);
+
+SELECT ROUND(123.456,3);//123.456
+SELECT ROUND(123.456,2);//123.46
+SELECT ROUND(123.456,1);//123.5
+SELECT ROUND(123.567,0);//124
+
+..................................................................
+
+==>CEIL () / CEILING () FUNCTION
+
+ CEIL(number);
+
+SELECT CEIL(123.456);//124
+SELECT CEIL(123.12);//124
+
+..................................................................
+
+==> FLOOR () FUNCTION
+
+ FLOOR(number);
+
+SELECT FLOOR(123.256);//123
+SELECT FLOOR(123.676);//123
+..................................................................
+
+==> ABS () FUNCTION +
+
+ ABS(number);
+
+SELECT ABS(-123.256);//123.256
+..................................................................
+==> SQRT () FUNCTION 
+
+FLOOR(number);
+
+SELECT SQRT(49); 7
+SELECT SQRT(81); 9
+..................................................................
+==> POW () FUNCTION 
+
+POW (power,base)
+POW(4,2);//16
+POW(10,10);//100
+POW(4,3);//64
+..................................................................
+
+==> SIGN () FUNCTION 
+ SIGN (number)
+
+if number > 0 , return 1
+if number < 0 , return -1
+if number = 0 , return 0
+
+SIGN (300) ; // 1
+SIGN (-300) ; // -1
+..................................................................

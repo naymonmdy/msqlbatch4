@@ -1,0 +1,77 @@
+==>Case Statment
+
+SELECT col1,col2,col3...,
+    CASE 
+    WHEH age < 18 THEN "yong"
+    WHEH age > 18 THEN "elder"
+    ELSE "Other"
+    END AS "age categories"
+FROM Table;
+......................................................
+
+SELECT * FROM Customers;
+
+SELECT *,
+CASE 
+    WHEN age <20   THEN "young"
+    WHEN age between 20 and 40 THEN "elder"
+ELSE "older"
+END AS "age categories"
+FROM Customers;
+
+SELECT *,
+CASE 
+    WHEN age <20   THEN "young"
+    WHEN age >= 20 and age <=40 THEN "elder"
+ELSE "older"
+END AS "age categories"
+FROM Customers;
+......................................................
+
+
+CREATE TABLE IF NOT EXISTS handsets (
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(10),
+    sellprice DECIMAL(10,2),
+    stock INT,
+    PRIMARY KEY (id)
+);
+
+
+DESC handsets;
+SHOW Create TABLE handsets;
+
+NSERT INTO handsets(name,sellprice,stock)
+VALUES ('samsung note 10',1500000,35),
+        ('samsung s9',900000,30),
+        ('samsung a4',600000,10),
+        ('vivo 12',500000,40),
+        ('vivo v6',400000,60),
+        ('vivo note 10',800000,20),
+        ('oppo f10',700000,18),
+        ('oppo f12',1200000,30),
+        ('oppo note 11',1500000,40),
+        ('sony note 10',1200000,5),
+        ('sony e9',700000,2),
+        ('nokia n10',400000,5),
+        ('nokia note 7',500000,6),
+        ('mi note 10',1300000,1),
+        ('samsung galaxy y',300000,0),
+        ('samsung galaxy e2',400000,6),
+        ('sony e12',900000,0);
+
+SELECT * FROM handsets;
+
+
+SELECT *,
+CASE 
+    WHEN stock between 1 and 10 THEN "*"
+    WHEN stock between 11 and 20 THEN "**"
+    WHEN stock between 21 and 30 THEN "***"
+    WHEN stock between 31 and 40 THEN "****"
+    WHEN stock between 41 and 60 THEN "*****"
+ELSE "out of stock"
+END AS "stock condition"
+FROM handsets;
+
+......................................................
