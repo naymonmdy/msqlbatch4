@@ -1,0 +1,42 @@
+==>CHECK constraint
+
+Create Table if not EXISTS purchases(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) not null,
+    ordinaryprice DECIMAL(10,2) not null,
+    sellprice DECIMAL(10,2) not null,
+
+)
+
+describe purchases;
+SHOW Create Table purchases;
+
+insert into purchases (name,ordinaryprice,sellprice) VALUES
+('redbull',400,1000),
+('sponsor',-300,600);
+
+
+SELECT * from purchases;
+
+
+
+
+Create Table if not EXISTS vippurchases(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) not null,
+    ordinaryprice DECIMAL(10,2) not null CHECK (ordinaryprice >=0),
+    sellprice DECIMAL(10,2) not null CHECK(sellprice >=0)
+)
+
+describe vippurchases;
+SHOW Create Table vippurchases;
+SHOW index from vippurchases;
+
+
+*error
+insert into vippurchases (name,ordinaryprice,sellprice) VALUES
+('redbull',400,1000),
+('sponsor',-300,600);
+
+
+SELECT * from vippurchases;

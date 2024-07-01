@@ -1,0 +1,17 @@
+//Cross Join Table
+
+1.Inner Join or Simple join
+2.Left Outer Join or Left Join
+3.Right Outer Join or Right Join
+4.Full Jion
+
+
+NOTE :: RELATIONSHIP NOTE
+
+1.one to one
+2.one to many
+3.many to many
+
+..........................................................
+
+Cross Join

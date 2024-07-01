@@ -1,0 +1,30 @@
+==> Temporary Table
+
+==> Syntax
+
+Create Temporarytable if not EXISTS tablename(
+    col1 int not null,
+    col2 VARCHAR,
+    col3............);
+
+.................................................
+
+Exerecise
+
+Create Temporarytable if not EXISTS chatroom(
+    id int not null AUTO_INCREMENT,
+    name VARCHAR(20),
+    age int,
+    city VARCHAR(50),
+    PRIMARY KEY(id) );
+
+describe chatroom;
+show create table chatroom;
+show tables;
+
+insert into chatroom (name,age,city) VALUES
+('aung aung',20,'yangon'),
+('tun tun',20,'yangon'),
+('zaw zaw',20,'yangon');
+
+SELECT * from chatroom;

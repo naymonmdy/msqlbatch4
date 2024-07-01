@@ -1,0 +1,49 @@
+==>Create Copy / Clone / Duplicate table
+
+
+==> Syntax
+
+Create table if not EXISTS newtablename
+SELECT col1,col2,col3...... 
+From existingtablename;
+
+
+Create table if not EXISTS newtablename
+SELECT col1,col2,col3...... 
+From existingtablename
+Where condition;
+
+
+................................................................
+
+Create table if not EXISTS originaltable
+(
+    id int not null AUTO_INCREMENT PRIMARY key,
+    productname VARCHAR(45) not null,
+    brandname VARCHAR(45) default null,
+    madeby VARCHAR(45) default null,
+    year YEAR  default null
+
+)
+
+
+
+describe originaltable;
+show create table ordinarytable;
+show index from ordinarytable;
+
+
+insert into originaltable (productname,brandname,madeby,year) VALUES
+('AV25','Asus','China',2020),
+('AS50','Asus','China',2022),
+('S11','oppo','China',2023),
+('F10','saumsung','China',2020),
+('V29','vivo','China',2022),
+('iphone','apple','China',2023),
+('iphone','apple','China',2024),
+('F10','oppo','China',2020),
+('note10','saumsung','China',2021),
+('v25','vivo','China',2024);
+
+
+SELECT * from originaltable;

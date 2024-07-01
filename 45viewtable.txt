@@ -1,0 +1,28 @@
+//View table
+
+=>Syntax
+
+
+=>Create
+
+Create view viewtable As
+...Statement
+
+
+=>Read
+SELECT col1,col2, from viewtable;
+
+
+=>Update
+Create or Replace View viewtable As
+...Statement
+
+
+
+=>Delete 
+Drop view if exists viewtablename;
+
+
+
+
+
