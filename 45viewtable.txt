@@ -22,7 +22,7 @@ Create or Replace View viewtable As
 =>Delete 
 Drop view if exists viewtablename;
 
-
+.........................................................................
 
 
 

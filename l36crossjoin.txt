@@ -14,4 +14,56 @@ NOTE :: RELATIONSHIP NOTE
 
 ..........................................................
 
-Cross Join
+==>Cross Join
+
+Create Table if not EXISTS buyers(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(30),
+    lastname VARCHAR(30),
+    email VARCHAR(30)
+)
+describe buyers;
+desc buyers;
+show create table buyers;
+show index from buyers;
+
+
+insert into buyers (firstname,lastname,email) VALUES
+('aung','aung','aungaung@gmail.com'),
+('zaw','zaw','zawzaw@gmail.com'),
+('nu','nu','nunu@gmail.com'),
+('naung','naung','naungnaung@gmail.com'),
+('ni','ni','nini@gmail.com'),
+('hla','hla','hlahla@gmail.com'),
+('tun','tun','tuntun@gmail.com'),
+('su','su','susu@gmail.com'),
+('yu','yu','yuyu@gmail.com')
+
+
+SELECT * from buyers;
+
+Create Table if not EXISTS orders(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    orderdate date,
+    amount decimal(10,2),
+    buyers_id int
+)
+
+describe orders;
+desc orders;
+show create table orders;
+show index from orders;
+
+insert into orders (orderdate,amount,buyers_id) VALUES
+('2024-5-1',50.25,2),
+('2024-6-1',70.48,1),
+('2024-6-15',40.25,6),
+('2024-6-17',50.25,6),
+('2024-5-23',50.78,9),
+('2024-5-25',60.78,10),
+('2024-6-11',50.78,11),
+('2024-6-12',80.78,11),
+('2024-6-13',90.78,12);
+
+SELECT * from orders;
+SELECT * from buyers;

@@ -1,0 +1,36 @@
+==>Inner Join
+
+SELECT * from buyers ;
+SELECT * from orders ;
+
+
+==>Method 1 join (first table first write)
+
+
+SELECT * From buyers,orders
+Where buyers.id = orders.buyers_id;
+
+
+SELECT * From orders,buyers
+Where buyers.id = orders.buyers_id;
+
+==>Method 2 (first table first write)
+
+SELECT * from buyers
+join orders
+on buyers.id=orders.buyers_id;
+
+SELECT * From orders
+JOIN buyers
+on buyers.id=orders.buyers_id;
+.........................................................................
+
+SELECT firstname,lastname,amount,orderdate From orders
+JOIN buyers
+on buyers.id=orders.buyers_id;
+
+SELECT firstname,lastname,amount,orderdate From buyers
+JOIN orders
+    on buyers.id=orders.buyers_id;
+
+.........................................................................

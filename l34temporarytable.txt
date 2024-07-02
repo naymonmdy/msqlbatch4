@@ -11,7 +11,7 @@ Create Temporarytable if not EXISTS tablename(
 
 Exerecise
 
-Create Temporarytable if not EXISTS chatroom(
+Create Temporary Table if not EXISTS chatroom(
     id int not null AUTO_INCREMENT,
     name VARCHAR(20),
     age int,

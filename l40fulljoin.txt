@@ -1,0 +1,14 @@
+==>Full Join or Union Join
+
+==>Syntax
+
+
+SELECT col1,col2,col3 from Table1
+Left Join table2
+    ON table1.column=table2.column
+UNION
+SELECT col1,col2,col3 from Table1
+Right Join table2
+    ON table1.column=table2.column;
+
+...............................................................

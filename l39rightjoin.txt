@@ -1,0 +1,32 @@
+==>Right Join or Right Outer Join
+
+SELECT col1,col2,col3 from Table1
+Right Join table2
+    ON table1.column=table2.column;
+
+...............................................................
+
+SELECT * from buyers;
+SELECT * from orders;
+
+
+SELECT * From buyers
+Right JOIN orders
+    ON buyers.id=orders.buyers_id;
+
+
+SELECT * From orders
+Right JOIN buyers
+    ON buyers.id=orders.buyers_id;
+
+
+
+SELECT firstname,lastname,amount,orderdate From buyers
+Right JOIN orders
+    ON buyers.id=orders.buyers_id;
+
+SELECT firstname,lastname,amount,orderdate From orders
+Right JOIN buyers
+    ON buyers.id=orders.buyers_id;
+
+...............................................................

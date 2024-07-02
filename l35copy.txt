@@ -47,3 +47,17 @@ insert into originaltable (productname,brandname,madeby,year) VALUES
 
 
 SELECT * from originaltable;
+
+
+//not include PRIMARY key
+create table if not exists duplicatetable
+SELECT * from originaltable;
+
+
+create table if not exists clonetable
+SELECT productname,year from originaltable
+Where yeaer =2023;
+
+describe clonetable;
+show create table clonetable;
+show index from clonetable;
