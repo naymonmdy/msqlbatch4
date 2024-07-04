@@ -67,3 +67,7 @@ insert into orders (orderdate,amount,buyers_id) VALUES
 
 SELECT * from orders;
 SELECT * from buyers;
+
+==>Cross Join
+SELECT * from buyers,orders;
+.........................................................................

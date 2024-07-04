@@ -1,0 +1,72 @@
+ CREATE TABLE IF NOT EXISTS vipmembers 
+    ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR (50) NOT Null, 
+    lastname VARCHAR (50) not Null, 
+    status INT Default 1
+    );
+
+
+insert into vipmembers (firstname,lastname,status) values
+('nu','nu',2),
+('yu','yu',2),
+('ni','lar',2),
+('su','su',2),
+('mu','yar',2);
+
+
+insert into vipmembers (firstname,lastname) values
+('aung','aung'),
+('mg','mg'),
+('naung','naung'),
+('tun','tun'),
+('moe','moe');
+
+
+ CREATE TABLE IF NOT EXISTS vipmembersphones
+    ( id INT NOT NULL AUTO_INCREMENT,
+    phone VARCHAR (50) NOT Null, 
+    vipmembers_id INT, 
+    PRIMARY KEY (id) ,
+    Foreign Key(vipmembers_id) References vipmembers(id) on delete cascade
+    );
+
+
+  insert into vipmembersphones (phone,vipmembers_id) values
+  ('091111',1),
+  ('092222',4),
+  ('093333',2),
+  ('094444',2),
+  ('095555',3),
+  ('096666',4);
+
+
+CREATE TABLE IF NOT EXISTS vipmemberspoints
+    ( id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    point INT Default 0, 
+    vipmembers_id INT,
+    Foreign Key(vipmembers_id) References vipmembers(id) on delete cascade
+    );
+
+insert into vipmemberspoints (point,vipmembers_id) values
+  (100,1),
+  (500,2),
+  (1000,3),
+  (2000,4)
+ ;
+
+==>Report
+
+ SELECT * from vipmembers;
+ SELECT * from vipmembersphones;
+ SELECT * from vipmemberspoints;
+
+ SELECT CONCAT(firstname,' ',lastname) as 'active members' from vipmembers where status=1;
+ SELECT CONCAT(firstname,' ',lastname) as 'blocked members' from vipmembers where status=2;
+
+
+ SELECT CONCAT(firstname,' ',lastname) as 'fullname',
+ CASE
+    WHEN status = 1 THEN 'active members'
+    ELSE 'blocked members'
+ END as 'Member Status'
+ From vipmembers;

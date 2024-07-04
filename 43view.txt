@@ -1,0 +1,67 @@
+==>VIEW Table
+
+CREATE table if not EXISTS shoppers(
+    id int not Null AUTO_INCREMENT PRIMARY key,
+    name VARCHAR(50) not null,
+    phone VARCHAR(50) not null unique
+);
+
+desc shoppers;
+show CREATE table shoppers;
+show index from shoppers;
+
+
+insert into shoppers(name,phone) values
+('aung aung','0911111'),
+('mg mg','0922222'),
+('naung naung','0933333'),
+('hla hla','0944444'),
+('nu nu','0955555'),
+('yu yu','0966666'),
+('mu mu','0977777'),
+('su su','0988888'),
+('yu par','0999999'),
+('ni hla','0912121'),
+('kyaw kyaw','0913131'),
+('zaw zaw','0914141'),
+('tun tun','0915151');
+
+SELECT * from shoppers;
+
+
+CREATE table if not EXISTS products(
+    id int not Null AUTO_INCREMENT PRIMARY key,
+    name VARCHAR(50) not null unique,
+    price decimal(10,2) not null
+);
+
+desc products;
+show CREATE table products;
+show index from products;
+
+insert into products(name,price) values
+('redbull',1600),
+('deedoo',800),
+('joey',900),
+('sponsor',1300),
+('water',100);
+
+CREATE table if not EXISTS checkouts(
+    date timestamp Default now(),
+    products_id int not Null ,
+    qty int not nul,
+    total decimal(10,2) not null,
+    payment ENUM('VISA','MPU','COD') not null,
+    shoppers_id int not null,
+    Foreign key (shoppers_id) References shoppers(id),
+    Foreign key (products_id) References products(id),
+); 
+
+
+insert into checkouts(date,products_id,qty,total,payment) values
+();
+
+
+SELECT * from shoppers;
+SELECT * from products;
+SELECT * from checkouts;

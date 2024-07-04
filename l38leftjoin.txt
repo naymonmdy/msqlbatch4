@@ -28,3 +28,5 @@ LEFT JOIN orders
 SELECT firstname,lastname,amount,orderdate From orders
 LEFT JOIN buyers
     ON buyers.id=orders.buyers_id;
+
+...............................................................
