@@ -1,0 +1,43 @@
+==>DATA BASE TRIGGER
+
+==>TRIGGER TIME  
+Before
+After
+
+
+==>TRIGGER EVENT 
+Insert 
+Update
+Delete
+
+==>TRIGGER EVENT              Old               New
+Insert                        No                Yes
+Update                        Yes               Yes
+Delete                        Yes               No
+
+
+
+==> Syntax
+DELIMITER  $$
+    CREATE TRIGGER triggername
+    trigger_time trigger_event ON Tablenaem FOR EACH ROW 
+    BEGIN
+
+    ------------------Statment
+    END $$
+
+DELIMITER ;
+
+
+==> Statment (IF THEN ELSE)
+
+IF condition THEN
+    code to executed
+ELSEIF  condition2 THEN
+    code to executed
+ELSEIF  condition3 THEN
+    code to executed
+ELSE
+    code to executed
+END If;
+------------------------------------------------------------------

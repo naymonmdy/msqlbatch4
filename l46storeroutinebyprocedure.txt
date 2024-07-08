@@ -1,0 +1,15 @@
+==> Store Routines
+(i) Procedures / We can call (Store Procedures)
+    (a)In = Input paramenter
+    (b)Out = Output paramenter
+    (c)INOut = InOut paramenter
+
+
+(ii) Function
+    (a) Builtin Function
+    (b) User define Function
+        (i) Input paramenter (paramenter or without but function return 1 time)
+
+
+-----------------------------------------------------------------------------------------------
+

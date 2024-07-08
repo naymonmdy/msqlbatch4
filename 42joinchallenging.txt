@@ -54,7 +54,7 @@ insert into vipmemberspoints (point,vipmembers_id) values
   (2000,4)
  ;
 
-==>Report
+==>Report active and blocked members Report
 
  SELECT * from vipmembers;
  SELECT * from vipmembersphones;
@@ -70,3 +70,88 @@ insert into vipmemberspoints (point,vipmembers_id) values
     ELSE 'blocked members'
  END as 'Member Status'
  From vipmembers;
+
+
+ ==> Phone Number Report
+
+ SELECT concat(firstname,' ',lastname) as 'name',phone
+ from vipmembers 
+ LEFT join vipmembersphones
+ on vipmembers.id=vipmembersphones.vipmembers_id;
+
+==> IS NOT NULL
+  SELECT concat(firstname,' ',lastname) as 'name',
+  if(vipmembersphones.phone is not Null,vipmembersphones.phone,'No phone')
+ from vipmembers 
+ LEFT join vipmembersphones
+ on vipmembers.id=vipmembersphones.vipmembers_id;
+
+
+ ==> IS  NULL
+  SELECT concat(firstname,' ',lastname) as 'name',
+  if(vipmembersphones.phone is Null,vipmembersphones.phone,'No phone')
+ from vipmembers 
+ LEFT join vipmembersphones
+ on vipmembers.id=vipmembersphones.vipmembers_id;
+
+ ==>CASE
+
+SELECT concat(firstname,' ',lastname) as 'name',
+  CASE
+    WHEN vipmembersphones.phone is Null THEN 'No phone Number'
+    ELSE vipmembersphones.phone
+  END as 'Phone Status'
+ from vipmembers 
+ LEFT join vipmembersphones
+ on vipmembers.id=vipmembersphones.vipmembers_id;
+
+
+
+SELECT concat(firstname,' ',lastname) as 'name',
+  CASE
+    WHEN vipmembersphones.phone is NOT Null THEN vipmembersphones.phone
+    ELSE "No phone Number"
+  END as 'Phone Status'
+ from vipmembers 
+ LEFT join vipmembersphones
+ on vipmembers.id=vipmembersphones.vipmembers_id;
+
+
+ ==>point Report
+
+ SELECT concat(firstname,' ',lastname) as 'name',point
+ from vipmembers 
+ LEFT join vipmemberspoints
+ on vipmembers.id=vipmemberspoints.vipmembers_id;
+
+
+ SELECT firstname,lastname,phone,point
+ from vipmembers
+ LEFT join vipmembersphones
+ on vipmembers.id=vipmembersphones.vipmembers_id
+ Left join vipmemberspoints
+ on vipmembers.id=vipmemberspoints.vipmembers_id;  
+
+
+
+ SELECT firstname,lastname,phone,point
+ from vipmembers AS vmb
+ LEFT join vipmembersphones AS vmbp
+ on vmb.id=vmbp.vipmembers_id
+ Left join vipmemberspoints AS vmpt
+ on vmb.id=vmpt.vipmembers_id;  
+
+  SELECT vmb.firstname,vmb.lastname,vmbp.phone,vmpt.point
+ from vipmembers AS vmb
+ LEFT join vipmembersphones AS vmbp
+ on vmb.id=vmbp.vipmembers_id
+ Left join vipmemberspoints AS vmpt
+ on vmb.id=vmpt.vipmembers_id;  
+
+**ERROR
+  SELECT vipmembers.firstname,vipmembers.lastname,vipmembersphones.phone,vipmemberspoints.point
+ from vipmembers AS vmb
+ LEFT join vipmembersphones AS vmbp
+ on vmb.id=vmbp.vipmembers_id
+ Left join vipmemberspoints AS vmpt
+ on vmb.id=vmpt.vipmembers_id;  
