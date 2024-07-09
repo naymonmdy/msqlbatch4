@@ -41,3 +41,168 @@ ELSE
     code to executed
 END If;
 ------------------------------------------------------------------
+
+Create table if not exists borrowers(
+    id int not null auto_increment primary key,
+    username varchar(50),
+    password varchar(50),
+    age int,
+    status int default 1
+)
+
+descre borrowers;
+show Create table borrowers;
+show index from borrowers;
+
+
+insert into borrowers (username,password,age)
+values
+('aung aung',MD5(SHA('12345')),20),
+('zaw zaw',MD5(SHA('12345')),30),
+('kyaw kyaw',MD5(SHA('12345')),40),
+('tun tun',MD5(SHA('12345')),35),
+('zayar',MD5(SHA('12345')),25);
+
+select * from borrowers;
+
+insert into borrowers (username,password,age)
+values
+('su su',MD5(SHA('12345')),15),
+('yu yu',MD5(SHA('12345')),16),
+('nu nu',MD5(SHA('12345')),17),
+('ni ni',MD5(SHA('12345')),16),
+('war war',MD5(SHA('12345')),13);
+
+select * from borrowers;
+------------------------------------------------------------------
+==>BEFORE INSERT
+
+DELIMITER //
+CREATE TRIGGER borrowerstatus_bfc
+BEFORE INSERT ON borrowers
+FOR EACH ROW
+BEGIN
+    IF NEW.age < 18 THEN
+        SET NEW.status = 2;
+    ELSEIF NEW.age > 65 THEN
+        SET NEW.status = 3;
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+
+Drop Trigger if exists borrowerstatus_bfc;
+show TRIGGER;
+------------------------------------------------------------------
+
+
+==>MySQL error Message
+
+DELIMITER //
+CREATE TRIGGER borrowerstatuserr_bfc
+BEFORE INSERT ON borrowers
+FOR EACH ROW
+BEGIN
+    IF NEW.age < 18 THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = "We can't provide the loan for this user";
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+insert into borrowers (username,password,age)
+values
+('su su',MD5(SHA('12345')),15);
+
+
+select * from borrowers;
+
+------------------------------------------------------------------
+==>AFTER INSERT
+
+create table if not exists borrowercreators (
+    id int not null auto_increment primary key,
+    borrowers_id INT,
+    createby varchar(50),
+    create_at timestamp default now()
+
+);
+
+
+
+desc borrowercreators;
+show Create table borrowercreators;
+show index from borrowercreators;
+
+DELIMITER //
+CREATE TRIGGER borrowerstatuserr_afc
+AFTER INSERT ON borrowers
+FOR EACH ROW
+BEGIN
+    DECLARE dbuser VARCHAR(50);
+    SELECT USER() INTO dbuser;
+    INSERT INTO borrowercreators(borrowers_id, createby)
+    VALUES (NEW.id, dbuser);
+END;
+//
+DELIMITER ;
+
+
+insert into borrowers (username,password,age)
+values
+('su su',MD5(SHA('12345')),34);
+------------------------------------------------------------------
+
+AFTER INSERT
+
+Create table if not exists remindmessage (
+    id int not null auto_increment primary key,
+    borrowers_id int,
+    message VARCHAR(50) not null
+)
+
+
+desc remindmessage;
+show Create table remindmessage;
+show index from remindmessage;
+
+
+
+DELIMITER //
+CREATE TRIGGER borrowersreminder_afc
+AFTER INSERT ON borrowers
+FOR EACH ROW
+BEGIN
+    IF NEW.age is Null THEN 
+        INSERT into remindmessage(borrowers_id,message)
+        VALUE (NEW.id,CONCAT("Dear ",NEW.username," please Update your age. "));
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+insert into borrowers (username,password,age)
+values
+('nay nay',MD5(SHA('12345')),34);
+
+
+
+insert into borrowers (username,password)
+values
+('mon mon',MD5(SHA('12345')));
+
+insert into borrowers (username,password)
+values
+('pyae pyae',MD5(SHA('12345')));
+
+
+select * from borrowers;
+select * from borrowercreators;
+select * from remindmessage;
+
+------------------------------------------------------------------
