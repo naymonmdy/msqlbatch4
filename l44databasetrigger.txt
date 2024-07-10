@@ -32,13 +32,13 @@ DELIMITER ;
 ==> Statment (IF THEN ELSE)
 
 IF condition THEN
-    code to executed
-ELSEIF  condition2 THEN
-    code to executed
-ELSEIF  condition3 THEN
-    code to executed
-ELSE
-    code to executed
+        code to executed
+    ELSEIF  condition2 THEN
+        code to executed
+    ELSEIF  condition3 THEN
+        code to executed
+    ELSE
+        code to executed
 END If;
 ------------------------------------------------------------------
 
@@ -256,7 +256,7 @@ CREATE TRIGGER borrowersageremainder_afu
 AFTER UPDATE ON borrowers
 FOR EACH ROW
 BEGIN
-        DELETE FROM remindmessage WHERE borrowers_id = OLD.id;
+    DELETE FROM remindmessage WHERE borrowers_id = OLD.id;
 END; //
 DELIMITER ;
 
@@ -308,4 +308,29 @@ DELETE from borrowers where id =1 ;
 DELETE from borrowers where id =4 ;
 DELETE from borrowers where id =5 ;
 
+------------------------------------------------------------------
+
+AFTER DELETE
+
+SELECT * From  borrowers;
+SELECT * From  borrowercreators;
+SELECT * From  borrowerremovers;
+
+
+DELIMITER //
+CREATE TRIGGER borrowersrmcreators_afd
+AFTER DELETE ON borrowers
+FOR EACH ROW
+BEGIN
+
+    DELETE FROM borrowercreators WHERE borrowers_id = OLD.id;
+     
+END; //
+DELIMITER ;
+
+SHOW TRIGGERS;
+
+DELETE From borrowers where id =14;
+DELETE From borrowers where id =15;
+DELETE From borrowers where id =16;
 ------------------------------------------------------------------
