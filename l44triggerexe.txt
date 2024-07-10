@@ -1,0 +1,57 @@
+create table if not exists officestaffs (
+    id int not null auto_increment primary key,
+    name varchar (50),
+    age INT,
+    salary Decimal (10,2),
+    status INT default 1
+
+);
+
+desc officestaffs;
+show Create table officestaffs;
+show index from officestaffs;
+
+
+INSERT into officestaffs(name,age,salary) values
+('aung aung',20,500000),
+('maung maung',30,30000),
+('tun tun',46,200000),
+('zaw zaw',18,400000),
+('kaung kaung',17,250000);
+
+
+SELECT * from officestaffs;
+
+
+CREATE TABLE IF NOT EXISTS salarylogs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    oldsalary DECIMAL(10,2) NOT NULL,
+    newsalary DECIMAL(10,2) NOT NULL,
+    officestaffs_id INT NOT NULL,
+    create_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    update_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (officestaffs_id) REFERENCES officestaffs(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+
+
+
+desc salarylogs;
+show Create table salarylogs;
+show index from salarylogs;
+
+
+DELIMITER //
+CREATE TRIGGER officestaffsslary_bfd
+BEFORE UPDATE ON officestaffs
+FOR EACH ROW
+BEGIN
+    IF NEW.salary <> OLD.salary THEN
+        INSERT into salarylogs(oldsalary,newsalary,officestaffs_id)
+        VALUE(OLD.salary,NEW.salary,OLD.id);
+    END IF;
+END;
+//
+DELIMITER ;
+
+.............................................................

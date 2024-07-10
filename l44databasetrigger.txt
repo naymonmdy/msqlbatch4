@@ -206,3 +206,106 @@ select * from borrowercreators;
 select * from remindmessage;
 
 ------------------------------------------------------------------
+
+==>BEFORE UPDATE
+
+
+DELIMITER //
+CREATE TRIGGER borrowersage_bfu
+BEFORE UPDATE ON borrowers
+FOR EACH ROW
+BEGIN
+    DECLARE errmessage VARCHAR(255);
+    SET errmessage = CONCAT("The old age is" , OLD.age,". Sorry we cannot provide to change.");
+
+    IF OLD.age is not Null THEN 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = errmessage;
+    ELSE
+        IF NEW.age < 18 THEN
+            SET NEW.status=2;
+        ELSEIF NEW.age >60 THEN
+            SET NEW.status =3;
+        END IF;
+    END IF;
+END; //
+DELIMITER ;
+
+SHOW TRIGGERS;
+
+
+SELECT * from borrowers;
+SELECT * from remindmessage;
+
+UPDATE borrowers SET age =20 where id =16;
+UPDATE borrowers SET age =50 where id =3;
+
+UPDATE borrowers SET age =13 where id =26;
+UPDATE borrowers SET age =65 where id =27;
+
+SHOW TRIGGERS;
+SELECT * from borrowers;
+SELECT * from borrowercreators;
+
+------------------------------------------------------------------
+
+==> AFTER UPDATE
+
+DELIMITER //
+CREATE TRIGGER borrowersageremainder_afu
+AFTER UPDATE ON borrowers
+FOR EACH ROW
+BEGIN
+        DELETE FROM remindmessage WHERE borrowers_id = OLD.id;
+END; //
+DELIMITER ;
+
+
+UPDATE borrowers SET age =40 where id =17;
+
+SHOW TRIGGERS;
+SELECT * from borrowers;
+SELECT * from remindmessage;
+
+------------------------------------------------------------------
+
+
+==> BEFORE DELETE
+CREATE table if not exists borrowerremovers(
+    id INT NOT NULL auto_increment primary key,
+    borrowers_id INT,
+    createby VARCHAR(50),
+    create_at timestamp default now()
+)
+
+DESC borrowerremovers;
+SHOW CREATE Tabel borrowerremovers;
+SHOW index from borrowerremovers;
+
+
+DELIMITER //
+CREATE TRIGGER borrowerremovers_bfd
+BEFORE DELETE ON borrowers
+FOR EACH ROW
+BEGIN
+    DECLARE dbuser VARCHAR(50);
+    SELECT USER() into dbuser;
+
+    insert into  borrowerremovers (borrowers_id,createby) value
+    (OLD.id,dbuser);
+     
+END; //
+DELIMITER ;
+
+
+
+SHOW TRIGGERS;
+SELECT * from borrowers;
+SELECT * from remindmessage;
+
+
+DELETE from borrowers where id =1 ;
+DELETE from borrowers where id =4 ;
+DELETE from borrowers where id =5 ;
+
+------------------------------------------------------------------
