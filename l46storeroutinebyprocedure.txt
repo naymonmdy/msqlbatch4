@@ -2,7 +2,7 @@
 (i) Procedures / We can call (Store Procedures)
     (a)In = Input paramenter
     (b)Out = Output paramenter
-    (c)INOut = InOut paramenter
+    (c)INOUT = InOut paramenter
 
 
 (ii) Function
@@ -13,3 +13,74 @@
 
 -----------------------------------------------------------------------------------------------
 
+(I) Procedure (We can call stored Procedure) OR FUNCTION
+
+CREATE TABLE IF NOT EXISTS capitals (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    amount DECIMAL(10,2) NOT NULL,
+    payment ENUM('MMK','USD') NOT NULL,
+    account ENUM('credit','debit') NOT NULL
+);
+
+
+DESC capitals;
+SHOW CREATE TABLE capitals;
+SHOW INDEX FROM capitals;
+
+INSERT INTO capitals(date,name,amount,payment,account) values
+('2024-06-20','mr.tin',500000,1,1),
+('2024-06-21','ms.july',300000,1,1),
+('2024-06-22','ms.july',200000,1,1),
+('2024-07-1','ms.tin',1000,2,1),
+('2024-06-2','ms.tin',3000,2,1),
+('2024-07-2','ms.july',3000,2,1),
+('2024-07-5','ms.tin',1000,2,1),
+('2024-07-6','ms.tin',1000,2,1),
+('2024-07-10','ms.tin',100000,1,2);
+
+
+SELECT * FROM capitals;
+
+==> Capitals by MMK
+
+SELECT name,sum(amount),payment,account FROM capitals
+WHERE account = 'credit' AND payment='MMK'
+GROUP BY name;
+
+
+==> Capitals by USD
+SELECT name,sum(amount),payment,account FROM capitals
+WHERE account = 'credit' AND payment='USD'
+GROUP BY name;
+
+CREATE VIEW vw_capitalbymmk AS
+SELECT name,sum(amount),payment,account FROM capitals
+WHERE account = 'credit' AND payment='MMK'
+GROUP BY name;
+
+CREATE OR REPLACE VIEW vw_capitalbyusd AS
+SELECT name,sum(amount),payment,account FROM capitals
+WHERE account = 'credit' AND payment='USD'
+GROUP BY name;
+
+
+SHOW FULL TABLES WHERE TABLE_TYPE LIKE 'VIEW';
+
+SELECT * FROM vw_capitalbymmk;
+SELECT * FROM vw_capitalbyusd;
+
+-----------------------------------------------------------------------------------------------
+
+==> Capital by account
+
+SELECT date,name,amount,payment,account
+FROM capitals
+WHERE name ="credit"
+ORDER BY date DESC;
+
+SELECT date,name,amount,payment,account
+FROM capitals
+WHERE name ="debit"
+ORDER BY date DESC;
