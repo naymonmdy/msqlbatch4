@@ -54,4 +54,123 @@ END;
 //
 DELIMITER ;
 
+
+*no action from salarylogs;
+SELECT * from officestaffs;
+SELECT * from salarylogs;
+
+Update officestaffs SET age=25 where id=1;
+
+Update officestaffs SET status=2 where id=5;
+
+Update officestaffs SET salary=3500000 where id=5;
+
+Update officestaffs SET salary=500000 where id=4;
+
+Update officestaffs SET salary=300000 where id=5;
+Update officestaffs SET salary=600000 where id=5;
+
+
+INSERT into officestaffs(name,age,salary) values
+('su su',30,500000),
+('nu nu',30,300000);
+
+.............................................................
+MULTI TRIGGER (Trigger to Trigger) (FOLLOWS)
+==>BEFORE UPDATE 
+
+CREATE TABLE IF NOT EXISTS salarydifflogs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    diffamount DECIMAL(10,2) not null,
+    officestaffs_id INT not null,
+    updatedby varchar(50) NOT Null,
+    FOREIGN KEY(officestaffs_id) REFERENCES officestaffs(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DESC salarydifflogs;
+SHOW CREATE TABLE salarydifflogs;
+SHOW INDEX FROM salarydifflogs;
+
+
+
+DELIMITER //
+CREATE TRIGGER officestaffsslarydiff_bfuf
+BEFORE UPDATE ON officestaffs
+FOR EACH ROW
+FOLLOWS officestaffsslary_bfd
+BEGIN
+
+      DECLARE dbuser VARCHAR(50);
+
+      DECLARE newsalary INT;
+      DECLARE oldsalary INT;
+      DECLARE result INT;
+
+      SELECT USER() into dbuser;
+
+      SET @newsalary := NEW.salary;
+      SET @oldsalary := OLD.salary;
+      SET @result := @newsalary - @oldsalary;
+
+
+    IF NEW.salary <> OLD.salary THEN
+        INSERT into salarydifflogs(diffamount,officestaffs_id,updatedby)
+        VALUE(@result,OLD.id,dbuser);
+    END IF;
+END; //
+DELIMITER ;
+
+Drop Trigger if EXISTS officestaffsslarydiff_bfuf;
+
+SELECT * from officestaffs;
+SELECT * from salarylogs;
+SELECT * from salarydifflogs;
+
+Update officestaffs set salary=600000 where id =1;
+
+Update officestaffs set salary=500000 where id =7;
+Update officestaffs set salary=300000 where id =1;
+.............................................................
+MULTI TRIGGER (Trigger to Trigger) (PRECEDES)
+==>BEFORE UPDATE 
+
+CREATE TABLE IF NOT EXISTS paydifflogs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    diffamount DECIMAL(10,2) not null,
+    officestaffs_id INT not null,
+    updatedby varchar(50) NOT Null,
+    FOREIGN KEY(officestaffs_id) REFERENCES officestaffs(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DESC paydifflogs;
+SHOW CREATE TABLE paydifflogs;
+SHOW INDEX FROM paydifflogs;
+
+
+DELIMITER //
+CREATE TRIGGER officestaffsslarydiff_bfup
+BEFORE UPDATE ON officestaffs
+FOR EACH ROW
+PRECEDES officestaffsslary_bfd
+BEGIN
+
+      SET @newsalary := NEW.salary;
+      SET @oldsalary := OLD.salary;
+      SET @result := @newsalary - @oldsalary;
+
+
+    IF NEW.salary <> OLD.salary THEN
+        INSERT into paydifflogs(diffamount,officestaffs_id,updatedby)
+        VALUE(@result,OLD.id,USER());
+    END IF;
+END; //
+DELIMITER ;
+
+Update officestaffs set salary=100000 where id =3;
+Update officestaffs set salary=700000 where id =5;
+Update officestaffs set salary=500000 where id =4;
+
+SELECT * from officestaffs;
+SELECT * from salarylogs;
+SELECT * from salarydifflogs;
 .............................................................

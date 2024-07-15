@@ -77,10 +77,94 @@ SELECT * FROM vw_capitalbyusd;
 
 SELECT date,name,amount,payment,account
 FROM capitals
-WHERE name ="credit"
+WHERE account ="credit"
 ORDER BY date DESC;
 
 SELECT date,name,amount,payment,account
 FROM capitals
-WHERE name ="debit"
+WHERE account ="debit"
 ORDER BY date DESC;
+
+
+DELIMITER //
+CREATE PROCEDURE cpreportaccounts_proc(p_acc VARCHAR(10))
+    BEGIN
+        SELECT date,name,amount,payment,account
+        FROM capitals
+        WHERE account = p_acc
+        ORDER BY date DESC;
+    END; //
+DELIMITER ;
+
+==>SHOW
+SHOW PROCEDURE STATUS Where ="WDF103259";
+
+
+**error
+CALL cpreportaccounts_proc();
+
+CALL cpreportaccounts_proc("credit");
+
+=>DROP
+DROP Procedure if exists cpreportaccounts_proc;
+
+
+
+DELIMITER //
+CREATE PROCEDURE cpreportdate_pdate(p_date date)
+    BEGIN
+        SELECT date,name,amount,payment,account
+        FROM capitals
+        WHERE date = p_date
+        ORDER BY date DESC;
+    END; //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE cpreportdate_pdate(IN p_date date)
+    BEGIN
+        SELECT date,name,amount,payment,account
+        FROM capitals
+        WHERE date = p_date
+    END; //
+DELIMITER ;
+
+
+SHOW PROCEDURE STATUS Where ="WDF103259";
+
+CALL cpreportdate_pdate("2024-07-01");
+CALL cpreportdate_pdate("2024-07-10");
+-----------------------------------------------------------------------------------------------
+
+=> Input and Output;
+
+SELECT * from Customers;
+SELECT count(*) from Customers Where city= "bago"; //7
+SELECT count(*) from Customers Where city= "yangon"; //8
+
+
+DELIMITER //
+CREATE PROCEDURE totalcurreportbycity_proc(IN p_city VARCHAR(50),OUT p_totalcu INT)
+BEGIN
+
+    SELECT count(*) INTO p_totalcu from Customers Where city= p_city; 
+
+END; //
+
+DELIMITER ;
+
+
+SHOW PROCEDURE STATUS Where ="WDF103259";
+
+*Error
+CALL totalcurreportbycity_proc("bago");
+
+SET @totalcustomer :=0;
+
+
+CALL totalcurreportbycity_proc("bago",@totalcustomer);
+SELECT @totalcustomer;
+
+-----------------------------------------------------------------------------------------------
+=> Input and Output; (Multi Output)
