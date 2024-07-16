@@ -131,6 +131,7 @@ CREATE PROCEDURE cpreportdate_pdate(IN p_date date)
 DELIMITER ;
 
 
+
 SHOW PROCEDURE STATUS Where ="WDF103259";
 
 CALL cpreportdate_pdate("2024-07-01");
@@ -168,3 +169,61 @@ SELECT @totalcustomer;
 
 -----------------------------------------------------------------------------------------------
 => Input and Output; (Multi Output)
+
+SELECT * from Customers;
+
+SELECT min(amount),max(amount),city from Customers Where city= "bago";
+
+DELIMITER //
+CREATE PROCEDURE minmaxcubycity_proc(
+    IN p_city VARCHAR(50),
+    OUT p_minamount INT,
+    Out p_maxamount INT)
+BEGIN
+
+  SELECT min(amount),max(amount) INTO p_minamount,p_maxamount,city from Customers
+   Where city= p_city;
+
+END; //
+
+DELIMITER ;
+
+
+SET @minvalue :=0;
+SET @maxvalue :=0;
+
+
+CALL minmaxcubycity_proc("Yangon",@minvalue,@maxvalue);
+
+SELECT @minvalue,@maxvalue;
+SELECT (@minvalue-@maxvalue) AS differentamount;
+
+-----------------------------------------------------------------------------------------------
+=> In /Out /INOUT 
+
+SELECT * from Customers;
+
+SELECT Min(age),Max(age) ,city  from Customers Where city ="yangon"
+
+
+DELIMITER //
+CREATE Procedure minmaxagebycity_proc(
+    INOUT p_city  VARCHAR(50),
+    OUT p_minage INT,
+    OUT p_maxage INT)
+BEGIN
+
+    SELECT Min(age),Max(age) INTO p_minage,p_maxage from Customers
+     Where city =p_city;
+END;//
+
+DELIMITER
+
+SET @min :=0;
+SET @max :=0;
+
+call minmaxagebycity_proc(@city,@min,@max);
+
+SELECT @city,@min,@max;
+
+-----------------------------------------------------------------------------------------------

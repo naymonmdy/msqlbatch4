@@ -1,0 +1,100 @@
+==> Store Routines
+
+(ii) Function
+    (a) Builtin Function
+    (b) User define Function
+        (i) Input paramenter (paramenter or without but function return 1 time)
+
+
+-----------------------------------------------------------------------------------------------
+=> User Define Function
+
+SELECT * from Product;
+SELECT * from Checkout;
+
+
+SELECT products.name,products.price,checkouts.qty,(products.price * checkouts.qty) As Totalamount
+FROM checkouts LEFT JOIN products
+ON checkouts.products_id = products.id;
+
+=> Grand Total
+
+SELECT sum(products.price * checkouts.qty) As Totalamount
+FROM checkouts LEFT JOIN products
+ON checkouts.products_id = products.id;
+
+DELIMITER //
+
+CREATE FUNCTION totalamount_fun()
+RETURNS DECIMAL DETERMINISTIC
+BEGIN 
+    DECLARE result DECIMAL;
+    SELECT sum(products.price * checkouts.qty) INTO result
+    FROM checkouts LEFT JOIN products
+    ON checkouts.products_id = products.id;
+    RETURN result;
+END;//
+DELIMITER ;
+
+
+=>SHOW FUNCTION
+SHOW FUNCTION STATUS WHERE DB = "WDF103259";
+
+SELECT totalamount_fun();
+
+==>DROP FUNCTION
+DROP FUNCTION IF EXISTS totalamount_fun;
+
+-----------------------------------------------------------------------------------------------
+
+=> With paramenter()
+
+SELECT sum(products.price * checkouts.qty) As Totalamount
+FROM checkouts LEFT JOIN products
+ON checkouts.products_id = products.id
+WHERE products_id = 2;
+
+DELIMITER //
+CREATE FUNCTION totalamountbyproductid_fun(p_productid INT)
+RETURNS DECIMAL DETERMINISTIC
+BEGIN
+    DECLARE totalamount DECIMAL;
+    SELECT sum(products.price * checkouts.qty) INTO totalamount
+    FROM checkouts LEFT JOIN products
+    ON checkouts.products_id = products.id
+    WHERE products_id = p_productid;
+    RETURN totalamount;
+END;//
+
+DELIMITER ;
+
+SELECT totalamountbyproductid_fun(1);
+SELECT totalamountbyproductid_fun(2);
+
+-----------------------------------------------------------------------------------------------
+=> With MULTI paramenter()
+
+=>GRAND Total 
+
+SELECT sum(products.price * checkouts.qty) As Totalamount
+FROM checkouts LEFT JOIN products
+ON checkouts.products_id = products.id
+WHERE products_id = 1 and checkouts.payment= "cod";
+
+DELIMITER //
+CREATE FUNCTION totalamountbypayment_fun(p_productid INT,p_payment VARCHAR(5))
+RETURNS DECIMAL DETERMINISTIC
+BEGIN
+    DECLARE totalamount DECIMAL;
+    SELECT sum(products.price * checkouts.qty) INTO totalamount
+    FROM checkouts LEFT JOIN products
+    ON checkouts.products_id = products.id
+    WHERE products_id = p_productid AND checkouts.payment = p_payment;
+    RETURN totalamount;
+END;//
+DELIMITER ;
+
+SELECT totalamountbypayment_fun(1,"cod");
+SELECT totalamountbypayment_fun(2,"visa");
+SELECT totalamountbypayment_fun(2,"mpu");
+-----------------------------------------------------------------------------------------------

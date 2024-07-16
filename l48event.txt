@@ -1,0 +1,58 @@
+==> EVENT
+
+==>EVENT TYPE (Schedule)
+(i) ONE TIME EVENT
+(ii) Recurring EVENT
+
+=> CHECK event ON/OFF
+SHOW PROCESSLIST;
+
+SET GLOBAL event_scheduler = ON;
+SET GLOBAL event_scheduler = OFF;
+
+-------------------------------------------------------------------------
+(i) ONE TIME EVENT
+
+=>METHOD 1
+CREATE EVENT eventname
+ON Schedule At timestamp
+DO 
+statements;
+
+=>METHOD 2
+CREATE EVENT eventname
+ON Schedule At timestamp
+ON COMPELSION PRESERVE
+DO 
+statements;
+
+(ii) Recurring EVENT
+
+=>METHOD 1
+CREATE EVENT eventname
+ON Schedule EVERY INTERVAL
+STARTS timestamp
+DO 
+statements;
+
+=>METHOD 2
+CREATE EVENT eventname
+ON Schedule EVERY INTERVAL
+STARTS timestamp
+ENDS timestamp
+DO 
+statements;
+
+-------------------------------------------------------------------------
+ONE TIME EVENT Exercise
+
+CREATE TABLE IF NOT EXISTS vipusers(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT Null,
+    email VARCHAR(50) NOT Null unique,
+    emailmverify INT
+);
+
+DESC vipusers;
+SHOW CREATE TABLE FROM vipusers;
+SHOW INDEX FROM vipusers;
