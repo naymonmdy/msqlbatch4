@@ -56,3 +56,79 @@ CREATE TABLE IF NOT EXISTS vipusers(
 DESC vipusers;
 SHOW CREATE TABLE FROM vipusers;
 SHOW INDEX FROM vipusers;
+
+
+Insert into vipusers (name,email,emailmverify) values
+('aung aung','aungaung@gmail.com',1),
+('kyaw kyaw','kyawkyaw@gmail.com',1),
+('tun tun','tuntun@gmail.com',1),
+('maung maung','maungmaung@gmail.com',1),
+('zaw zaw','zawzaw@gmail.com',1);
+
+Insert into vipusers (name,email) values
+('nu nu','susu@gmail.com'),
+('po po','popop@gmail.com'),
+('mu mu','mumu@gmail.com'),
+('myint myint','myintmyint@gmail.com'),
+('yu yu','yuyu@gmail.com');
+
+
+CREATE EVENT vipusers_ev
+ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 30 SECOND
+DO
+DELETE FROM vipusers Where emailmverify IS NULL;
+
+
+//Remaining history and log
+
+CREATE EVENT vipusers_ev
+ON SCHEDULE AT CURRENT_TIMESTAMP + INTERVAL 30 SECOND
+COMPLETION PRESERVE
+DO
+DELETE FROM vipusers Where emailmverify IS NULL;
+
+LIST EVENTS;
+SHOW EVENTS;
+
+=>DROP EVENT
+DROP EVENT if EXISTS vipusers_ev;
+
+-------------------------------------------------------------------------
+
+√(ii) Recurring EVENT
+
+CREATE TABLE IF NOT EXISTS dailywifipasswords(
+    id int not null AUTO_INCREMENT PRIMARY KEY,
+    password VARCHAR(8) NOT Null unique,
+    status INT Default 1
+);
+DESC dailywifipasswords;
+SHOW CREATE TABLE FROM dailywifipasswords;
+SHOW INDEX FROM dailywifipasswords;
+
+
+Insert into dailywifipasswords(password,status) values
+('1111',2),
+('2222',2),
+('3333',2),
+('4444',2),
+('5555',1);
+
+=>METHOD 1
+CREATE EVENT dailywifipasswords_ev
+ON Schedule EVERY 1 DAY
+STARTS "2024-7-17 21:15:00"
+DO 
+Update dailywifipasswords SET status =2 Where status =1;
+
+
+
+
+=>METHOD 2
+CREATE EVENT eventname
+ON Schedule EVERY INTERVAL
+STARTS timestamp
+ENDS timestamp
+DO 
+statements;
+
