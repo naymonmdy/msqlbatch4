@@ -125,10 +125,23 @@ Update dailywifipasswords SET status =2 Where status =1;
 
 
 =>METHOD 2
-CREATE EVENT eventname
-ON Schedule EVERY INTERVAL
-STARTS timestamp
-ENDS timestamp
+
+
+Insert into dailywifipasswords(password,status) values
+('6666',2),
+('7777',2);
+
+
+CREATE EVENT dailywifipasswordswithend_ev
+ON Schedule EVERY 2 DAY
+STARTS "2024-7-17 21:22:00"
+ENDS "2024-10-25 21:22:00"
 DO 
+UPDATE dailywifipasswords SET status =2 Where status =1
 statements;
 
+
+SHOW EVENTS;
+DROP EVENT IF EXISTS dailywifipasswordswithend_ev;
+
+-------------------------------------------------------------------------
