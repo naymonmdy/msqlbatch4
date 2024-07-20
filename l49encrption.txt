@@ -1,0 +1,99 @@
+==>Encrpyt 
+
+SH1 (String) Function (Secure Hash Algorithm 1) plain text to Encrypt code
+MD5 (String ) Function (Message -Digest Hash Algorithm 1) plain text to Encrypt code
+
+
+static code
+*result = be635d4b5c5c730a1a30fb9a5289a4e6
+SELECT MD5("Save Myanmar");
+
+
+*result =Null
+SELECT MD5(null);
+
+=Terminal
+
+Linux control+alt+t
+
+=window
+windows + r
+cmd
+cd\
+cd xammp
+cd mysql
+cd bin
+mysql -u root -p
+
+logout 
+exit;
+or 
+\q
+
+
+
+
+
+==>Linux
+
+
+
+mysql -u root -p
+
+
+CREATE TABLE accounts(
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(50),
+    email VARCHAR(50),
+    password VARCHAR(30)
+);
+
+INSERT INTO accounts(name,email,password)
+VALUES ('aung aung','aungaung@gmail.com',1234),
+ ('mg mg','mgmg@gmail.com','abcdef'),
+ ('tun tun','tuntun@gmail.com','abcd1234');
+
+ SELECT * FROM accounts;
+
+
+ SELECT name,email 
+    IF(password=1234,'correct password','incorrect password') AS 'verify'
+FROM accounts;
+
+
+
+
+ SELECT name,email 
+    CASE 
+        WHEN password ="1234" THEN "correct password is 1234"
+        WHEN password ="abcdef" THEN "correct password is abcdef"
+        WHEN password ="abcd1234" THEN "correct password is abcd1234"
+        ELSE 'incorrect password'
+    END AS 'verify password'
+FROM accounts;
+
+
+INSERT INTO accounts(name,email,password)
+VALUES ('su su','susu@gmail.com',MD5("1234")),
+ ('nu nu','nunu@gmail.com',MD5('abcdef')),
+ ('yu yu','yu@gmail.com',SHA1('abcd1234'));
+
+
+ SELECT name,email 
+    CASE 
+        WHEN password =SHA1("1234") THEN "correct password is 1234"
+        WHEN password =SHA1("abcdef") THEN "correct password is abcdef"
+        WHEN password =SHA1("abcd1234") THEN "correct password is abcd1234"
+        ELSE 'incorrect password'
+    END AS 'verify password'
+FROM accounts;
+
+
+ SELECT name,email 
+    CASE 
+        WHEN password =MD5("1234") THEN "correct password is 1234"
+        WHEN password =MD5("abcdef") THEN "correct password is abcdef"
+        WHEN password =MD5("abcd1234") THEN "correct password is abcd1234"
+        ELSE 'incorrect password'
+    END AS 'verify password'
+FROM accounts;
